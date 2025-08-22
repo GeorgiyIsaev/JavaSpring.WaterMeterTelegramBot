@@ -22,18 +22,49 @@ public class Profiles {
         return Collections.unmodifiableMap(profiles);
     }
 
-    public void createNewProfile(){
+    public Profile createNewProfile(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("input name Profile: ");
         String name = scanner.nextLine();
         System.out.print("input key Profile: ");
         String key = scanner.nextLine();
-        this.addProfile(name,key);
+        Profile profile = this.addProfile(name,key);
+        scanner.close();
+        return profile;
     }
 
 
-    public void addProfile(String name, String key){
+    public Profile addProfile(String name, String key){
         Profile profile = new Profile(name,key);
         profiles.put(name, profile);
+        return profile;
     }
+    public Profile selectedProfile(){
+
+
+
+        System.out.println("Меню выбора профиля: ");
+        int count = 0;
+        for(Profile profile : profiles.values()){
+            System.out.println(count++ + ": {" + profile.name()+ " - " + profile.key() + "};");
+        }
+
+
+       // System.out.print("Введите имя существующего профиля или создайте новый введя новое имя: ");
+       // Scanner scanner = new Scanner(System.in);
+       // String input = scanner.nextLine();
+       // scanner.close();
+
+        Profile profile = getProfile("input");
+        if(profile == null){
+            profile = createNewProfile();
+        }
+        return profile;
+    }
+
+
+   public Profile getProfile(String input){
+       return profiles.get(input.toLowerCase());
+    }
+
 }

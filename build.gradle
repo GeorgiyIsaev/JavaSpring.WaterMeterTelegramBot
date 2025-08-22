@@ -8,6 +8,7 @@ group = 'javaSpring'
 version = '0.0.1-SNAPSHOT'
 description = 'An application for monitoring the water consumed by the user.'
 
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(24)

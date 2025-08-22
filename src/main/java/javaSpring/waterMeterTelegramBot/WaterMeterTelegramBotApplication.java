@@ -1,5 +1,6 @@
 package javaSpring.waterMeterTelegramBot;
 
+import javaSpring.waterMeterTelegramBot.profles.Profile;
 import javaSpring.waterMeterTelegramBot.profles.Profiles;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,8 @@ public class WaterMeterTelegramBotApplication {
 
 	@Bean
 	public Profiles createParkinHendler(Profiles profiles){
-		profiles.createNewProfile();
+		Profile profile = profiles.selectedProfile();
+		System.out.println(profile.name() + " " + profile.key());
 
 		return profiles;
 	}
