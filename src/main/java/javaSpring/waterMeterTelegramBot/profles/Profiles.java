@@ -1,8 +1,11 @@
 package javaSpring.waterMeterTelegramBot.profles;
 
 
+import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,10 +15,16 @@ import java.util.Scanner;
 @Component
 public class Profiles {
     private final Map<String, Profile> profiles;
+    ConsoleController console;
+    String pathProfiles = "date" +  File.separator + "profiles";
 
-    public Profiles(){
+    public Profiles(ConsoleController console){
         this.profiles = new HashMap<>();
+        this.console = console;
 
+        LoaderProfiles loaderProfiles = new LoaderProfiles();
+        Path pathProfile = Path.of(pathProfiles);
+        loaderProfiles.loadProfiles(pathProfile,  this.profiles);
     }
 
     public Map<String, Profile> getProfiles() {
@@ -23,41 +32,47 @@ public class Profiles {
     }
 
     public Profile createNewProfile(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("input name Profile: ");
-        String name = scanner.nextLine();
-        System.out.print("input key Profile: ");
-        String key = scanner.nextLine();
-        Profile profile = this.addProfile(name,key);
-        scanner.close();
-        return profile;
+        String name = console.input("Введите имя профиля:").toLowerCase();
+        String key = console.input("Введите ключ профиля:").toLowerCase();
+        return this.addProfile(name,key);
+    }
+
+    public Profile createNewProfile(String name){
+        String key = console.input("Введите ключ для профиля "+name+":").toLowerCase();
+        return this.addProfile(name,key);
     }
 
 
     public Profile addProfile(String name, String key){
+        name = deleteSpecialCharacters(name);
         Profile profile = new Profile(name,key);
         profiles.put(name, profile);
+        saveProfile(profile);
         return profile;
     }
+
+    public String deleteSpecialCharacters(String text){
+        return text.replace("\\", "");
+    }
+
+    public void saveProfile(Profile profile){
+        SaverProfiles saverProfiles = new SaverProfiles();
+        Path pathProfile = Path.of( "date" +  File.separator + "profiles" + File.separator + profile.name()+".txt");
+        saverProfiles.write(pathProfile, profile);
+    }
+
     public Profile selectedProfile(){
-
-
-
-        System.out.println("Меню выбора профиля: ");
+        if(!profiles.isEmpty()) {
+            System.out.println("Меню выбора профиля: ");
+        }
         int count = 0;
         for(Profile profile : profiles.values()){
             System.out.println(count++ + ": {" + profile.name()+ " - " + profile.key() + "};");
         }
-
-
-       // System.out.print("Введите имя существующего профиля или создайте новый введя новое имя: ");
-       // Scanner scanner = new Scanner(System.in);
-       // String input = scanner.nextLine();
-       // scanner.close();
-
-        Profile profile = getProfile("input");
+        String input = console.input("Введите имя существующего профиля или создайте новый введя новое имя: ").toLowerCase();
+        Profile profile = getProfile(input);
         if(profile == null){
-            profile = createNewProfile();
+            profile = createNewProfile(input);
         }
         return profile;
     }

@@ -15,11 +15,10 @@ public class WaterMeterTelegramBotApplication {
 
 
 	@Bean
-	public Profiles createParkinHendler(Profiles profiles){
+	public Profile createProfile(Profiles profiles){
 		Profile profile = profiles.selectedProfile();
-		System.out.println(profile.name() + " " + profile.key());
-
-		return profiles;
+		System.out.println("Выбран Профиль: {"+ profile.name() + " - " + profile.key() + "}");
+		return profile;
 	}
 
 }
