@@ -1,7 +1,7 @@
 package javaSpring.waterMeterTelegramBot;
 
-import javaSpring.waterMeterTelegramBot.profles.Profile;
-import javaSpring.waterMeterTelegramBot.profles.Profiles;
+import javaSpring.waterMeterTelegramBot.profiles.Profile;
+import javaSpring.waterMeterTelegramBot.profiles.Profiles;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

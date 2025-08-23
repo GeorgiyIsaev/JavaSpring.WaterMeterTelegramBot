@@ -1,10 +1,9 @@
-package javaSpring.waterMeterTelegramBot.profles;
+package javaSpring.waterMeterTelegramBot.profiles.files;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javaSpring.waterMeterTelegramBot.controlException.FileException;
+import javaSpring.waterMeterTelegramBot.profiles.Profile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
