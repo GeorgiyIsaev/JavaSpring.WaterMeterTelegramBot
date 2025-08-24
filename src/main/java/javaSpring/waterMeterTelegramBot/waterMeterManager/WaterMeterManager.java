@@ -17,7 +17,14 @@ public class WaterMeterManager {
         this.profile = profile;
         System.out.println("Конструктор Выбран Профиль: {"+ profile.name() + " - " + profile.key() + "}");
         users = new HashMap<>();
-
     }
+
+    public User getUser(String nameUser){
+        return users.get(nameUser);
+    }
+    public User createUser(String nameUser, double weight){
+        return users.put(nameUser, new User(nameUser, weight));
+    }
+
 
 }
