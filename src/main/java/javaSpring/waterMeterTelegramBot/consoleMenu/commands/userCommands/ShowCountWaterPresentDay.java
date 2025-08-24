@@ -20,7 +20,7 @@ public class ShowCountWaterPresentDay extends CommandBase {
     @Override
     public String start(String message) {
         String[] splited = message.split(" ");
-        if(splited.length <1){
+        if(splited.length <2){
             return "Ошибка передачи данных при выведении иформации о количестве выпитой сегодня воды";
         }
         User user = getConsoleManager().getUsersManager().getUser(splited[1]);

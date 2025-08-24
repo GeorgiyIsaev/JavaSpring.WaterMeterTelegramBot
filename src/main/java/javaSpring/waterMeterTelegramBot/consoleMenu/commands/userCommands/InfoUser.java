@@ -22,7 +22,7 @@ public class InfoUser extends CommandBase {
     @Override
     public String start(String message) {
         String[] splited = message.split(" ");
-        if(splited.length <1){
+        if(splited.length <2){
             return "Ошибка передачи данных об имени пользователя";
         }
         User user = getConsoleManager().getUsersManager().getUser(splited[1]);
@@ -39,11 +39,11 @@ public class InfoUser extends CommandBase {
             message.append("День: ").append(waterConsumptionCalendar.getDate());
             message.append(" Всего Выпито: ").append(waterConsumptionCalendar.totalWaterDrunkForDay());
         }
-        message.append("'/nОтметки сегодня: /n");
+        message.append("'\nОтметки сегодня: \n");
         WaterConsumptionCalendar presentDayDrunkWater = user.getCalendars().getLast();
         for (WaterConsumption drunk : presentDayDrunkWater.getConsumes()){
             message.append("Время: ").append(drunk.date().getHours()).append(":").append(drunk.date().getMinutes());
-            message.append(" Выпито: ").append(drunk.countWaterMl());
+            message.append(" Выпито: ").append(drunk.countWaterMl()).append("\n");
         }
         return message.toString();
     }

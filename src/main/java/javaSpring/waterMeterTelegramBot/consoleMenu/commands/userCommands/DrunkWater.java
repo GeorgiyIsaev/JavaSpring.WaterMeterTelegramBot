@@ -19,7 +19,8 @@ public class DrunkWater extends CommandBase {
     @Override
     public String start(String message) {
         String[] splited = message.split(" ");
-        if(splited.length <2){
+        System.out.println("DrunkWater");
+        if(splited.length <3){
             return "Ошибка передачи данных о выпитой воде!";
         }
 

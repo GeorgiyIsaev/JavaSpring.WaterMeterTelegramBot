@@ -20,7 +20,7 @@ public class SetUserWeight extends CommandBase {
     @Override
     public String start(String message) {
         String[] splited = message.split(" ");
-        if(splited.length <2){
+        if(splited.length <3){
             return "Ошибка передачи данных при изменении веса!";
         }
 
@@ -32,6 +32,9 @@ public class SetUserWeight extends CommandBase {
         }
 
         User user = getConsoleManager().getUsersManager().setWeightToUser(splited[2], weight);
+        if (user == null){
+            return "Пользователь " + splited[2] + "не найден!";
+        }
         return "Вес " + user.getName() + " составляет " + user.getWeight();
     }
 }

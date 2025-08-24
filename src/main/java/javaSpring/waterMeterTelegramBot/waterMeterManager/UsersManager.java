@@ -22,7 +22,7 @@ public class UsersManager {
     public User getUserOrCreateIfNot(String nameUser){
         User user = getUser(nameUser);
         if(user == null){
-            user = createUser(nameUser);
+            return createUser(nameUser);
         }
         return user;
     }
@@ -31,10 +31,14 @@ public class UsersManager {
         return users.get(nameUser);
     }
     public User createUser(String nameUser, double weight){
-        return users.put(nameUser, new User(nameUser, weight));
+        User user = new User(nameUser, weight);
+        users.put(nameUser, user);
+        return user;
     }
     public User createUser(String nameUser){
-        return users.put(nameUser, new User(nameUser, 0));
+        User user = new User(nameUser, 0);
+        users.put(nameUser, user);
+        return user;
     }
 
     public User setWeightToUser(String nameUser, double weight){

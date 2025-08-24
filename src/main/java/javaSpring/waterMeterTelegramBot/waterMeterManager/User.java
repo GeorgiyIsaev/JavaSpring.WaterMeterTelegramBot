@@ -38,6 +38,10 @@ public class User {
     public void addDrunkWater(int countDrunkWaterMl) {
         Date date = new Date();
         WaterConsumptionCalendar waterConsumptionCalendar = this.returnPresentDay(date);
+        if(waterConsumptionCalendar == null){
+            waterConsumptionCalendar = new WaterConsumptionCalendar(date);
+            calendars.add(waterConsumptionCalendar);
+        }
         waterConsumptionCalendar.addData(date,countDrunkWaterMl);
     }
 
