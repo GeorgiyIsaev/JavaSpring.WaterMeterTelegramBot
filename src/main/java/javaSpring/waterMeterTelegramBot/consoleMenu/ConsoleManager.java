@@ -31,18 +31,16 @@ public class ConsoleManager {
         commands.put(iCommand.getName().toLowerCase(), iCommand);
     }
 
-
-
     public void setExit(boolean exit) {
         isExit = exit;
     }
-
-
-
     public Map<String, ICommand> getCommands() {
         return commands;
     }
 
+    public UsersManager getUsersManager() {
+        return usersManager;
+    }
 
 
     public void commandCall(String command){
