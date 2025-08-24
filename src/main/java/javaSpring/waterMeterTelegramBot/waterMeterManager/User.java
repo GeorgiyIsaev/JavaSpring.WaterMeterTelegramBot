@@ -2,6 +2,7 @@ package javaSpring.waterMeterTelegramBot.waterMeterManager;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 import java.util.List;
@@ -11,10 +12,23 @@ public class User {
     private double weight;
     private List<WaterConsumptionCalendar> calendars;
 
+
     public User(String name, double weight) {
         this.name = name;
         this.weight = weight;
         calendars = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public List<WaterConsumptionCalendar> getCalendars() {
+        return Collections.unmodifiableList(calendars);
     }
 
     public void addDrunkWater(int countDrunkWaterMl) {
@@ -42,7 +56,6 @@ public class User {
         }
         return waterConsumptionCalendar;
     }
-
 
 
 }
