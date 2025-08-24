@@ -4,7 +4,7 @@ import javaSpring.waterMeterTelegramBot.consoleMenu.ConsoleManager;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.CommandBase;
 import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.User;
 import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.WaterConsumption;
-import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.WaterConsumptionCalendar;
+import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.WaterConsumptionDay;
 
 public class InfoUser extends CommandBase {
 
@@ -33,12 +33,12 @@ public class InfoUser extends CommandBase {
         StringBuilder message = new StringBuilder();
         message.append("Пользователь: ").append(user.getName()).append(" ВЕС: ").append(user.getWeight()).append("\n");
 
-        for (WaterConsumptionCalendar waterConsumptionCalendar : user.getCalendars()){
-            message.append("День: ").append(waterConsumptionCalendar.getDate());
-            message.append(" Всего Выпито: ").append(waterConsumptionCalendar.totalWaterDrunkForDay());
+        for (WaterConsumptionDay waterConsumptionDay : user.getCalendars()){
+            message.append("День: ").append(waterConsumptionDay.getDate());
+            message.append(" Всего Выпито: ").append(waterConsumptionDay.totalWaterDrunkForDay());
         }
         message.append("'\nОтметки сегодня: \n");
-        WaterConsumptionCalendar presentDayDrunkWater = user.getCalendars().getLast();
+        WaterConsumptionDay presentDayDrunkWater = user.getCalendars().getLast();
         for (WaterConsumption drunk : presentDayDrunkWater.getConsumes()){
             message.append("Время: ").append(drunk.date().getHours()).append(":").append(drunk.date().getMinutes());
             message.append(" Выпито: ").append(drunk.countWaterMl()).append("\n");

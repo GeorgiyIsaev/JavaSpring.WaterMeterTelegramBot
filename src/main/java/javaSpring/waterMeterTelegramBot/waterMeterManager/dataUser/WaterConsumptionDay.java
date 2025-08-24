@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class WaterConsumptionCalendar {
+public class WaterConsumptionDay {
     private final Date date;
 
     private final List<WaterConsumption> consumes;
 
-    public WaterConsumptionCalendar(Date date) {
+    public WaterConsumptionDay(Date date) {
         this.date = date;
         this.consumes = new ArrayList<>();
     }

@@ -10,7 +10,7 @@ import java.util.List;
 public class User {
     private String name;
     private double weight;
-    private List<WaterConsumptionCalendar> calendars;
+    private List<WaterConsumptionDay> calendars;
 
 
     public User(String name, double weight) {
@@ -31,38 +31,38 @@ public class User {
         this.weight = weight;
     }
 
-    public List<WaterConsumptionCalendar> getCalendars() {
+    public List<WaterConsumptionDay> getCalendars() {
         return Collections.unmodifiableList(calendars);
     }
 
     public void addDrunkWater(int countDrunkWaterMl) {
         Date date = new Date();
-        WaterConsumptionCalendar waterConsumptionCalendar = this.returnPresentDay(date);
-        if(waterConsumptionCalendar == null){
-            waterConsumptionCalendar = new WaterConsumptionCalendar(date);
-            calendars.add(waterConsumptionCalendar);
+        WaterConsumptionDay waterConsumptionDay = this.returnPresentDay(date);
+        if(waterConsumptionDay == null){
+            waterConsumptionDay = new WaterConsumptionDay(date);
+            calendars.add(waterConsumptionDay);
         }
-        waterConsumptionCalendar.addData(date,countDrunkWaterMl);
+        waterConsumptionDay.addData(date,countDrunkWaterMl);
     }
 
-    public boolean isEqualsDay(WaterConsumptionCalendar waterConsumptionCalendar, Date date){
-         if(waterConsumptionCalendar.getDate().getYear() == date.getYear() &&
-                waterConsumptionCalendar.getDate().getMonth() == date.getMonth() &&
-                waterConsumptionCalendar.getDate().getDay() == date.getDay()){
+    public boolean isEqualsDay(WaterConsumptionDay waterConsumptionDay, Date date){
+         if(waterConsumptionDay.getDate().getYear() == date.getYear() &&
+                waterConsumptionDay.getDate().getMonth() == date.getMonth() &&
+                waterConsumptionDay.getDate().getDay() == date.getDay()){
             return true;
         }
         return false;
     }
 
-    public WaterConsumptionCalendar returnPresentDay(Date date){
+    public WaterConsumptionDay returnPresentDay(Date date){
         if(calendars.isEmpty()) {
             return null;
         }
-        WaterConsumptionCalendar waterConsumptionCalendar = calendars.getLast();
-        if(!this.isEqualsDay(waterConsumptionCalendar, date)){
-            waterConsumptionCalendar = new WaterConsumptionCalendar(date);
+        WaterConsumptionDay waterConsumptionDay = calendars.getLast();
+        if(!this.isEqualsDay(waterConsumptionDay, date)){
+            waterConsumptionDay = new WaterConsumptionDay(date);
         }
-        return waterConsumptionCalendar;
+        return waterConsumptionDay;
     }
 
 
