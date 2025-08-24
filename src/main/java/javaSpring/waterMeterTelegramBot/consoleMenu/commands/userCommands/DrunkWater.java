@@ -13,7 +13,7 @@ public class DrunkWater extends CommandBase {
 
     @Override
     public String description(){
-        return  "\"" + getName() + " 'имя задачи'\" – добавить ЭПИК";
+        return  "\"" + getName() + " 'количество воды' 'имя пользовтеля'\" – запись о выпитой воде в данный момент";
     }
 
     @Override

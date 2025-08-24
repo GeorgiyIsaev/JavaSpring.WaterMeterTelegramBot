@@ -14,7 +14,7 @@ public class SetUserWeight extends CommandBase {
 
     @Override
     public String description() {
-        return "\"" + getName() + " 'имя задачи'\" – добавить ЭПИК";
+        return "\"" + getName() + " 'новое значение веса'\" – Изменит вес пользователя";
     }
 
     @Override
