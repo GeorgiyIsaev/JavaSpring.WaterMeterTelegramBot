@@ -1,11 +1,12 @@
-package javaSpring.waterMeterTelegramBot.consoleMenu.commands;
+package javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands;
 
 
 import javaSpring.waterMeterTelegramBot.consoleMenu.ConsoleManager;
+import javaSpring.waterMeterTelegramBot.consoleMenu.commands.CommandBase;
 
-public class MyCommand extends CommandBase {
+public class DrunkWater extends CommandBase {
 
-    public MyCommand(String name, ConsoleManager consoleManager) {
+    public DrunkWater(String name, ConsoleManager consoleManager) {
         super(name, consoleManager);
     }
 
@@ -16,6 +17,10 @@ public class MyCommand extends CommandBase {
 
     @Override
     public String start(String message) {
+
+
+
+
         return "";
     }
 
