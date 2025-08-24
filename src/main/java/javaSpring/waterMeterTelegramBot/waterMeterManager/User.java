@@ -27,6 +27,10 @@ public class User {
         return weight;
     }
 
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     public List<WaterConsumptionCalendar> getCalendars() {
         return Collections.unmodifiableList(calendars);
     }
