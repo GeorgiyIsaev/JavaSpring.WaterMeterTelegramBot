@@ -5,6 +5,9 @@ import javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands.DrunkW
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.Exit;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.Help;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.ICommand;
+import javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands.InfoUser;
+import javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands.SetUserWeight;
+import javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands.ShowCountWaterPresentDay;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
 import javaSpring.waterMeterTelegramBot.waterMeterManager.UsersManager;
 import org.springframework.stereotype.Component;
@@ -26,6 +29,10 @@ public class ConsoleManager {
         addCommand(new Help("Help", this));
         addCommand(new Exit("Exit", this));
         addCommand(new DrunkWater("Выпил", this));
+        addCommand(new InfoUser("Показать", this));
+        addCommand(new SetUserWeight("Вес", this));
+        addCommand(new ShowCountWaterPresentDay("Сегодня", this));
+
     }
     public void addCommand(ICommand iCommand){
         commands.put(iCommand.getName().toLowerCase(), iCommand);
