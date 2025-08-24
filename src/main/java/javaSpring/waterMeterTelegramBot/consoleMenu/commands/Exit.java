@@ -15,7 +15,7 @@ public class Exit extends CommandBase {
 
     @Override
     public String start(String message) {
-        consoleManager.setExit(false);
-        consoleManager.getNotificationService().sendTo(Notification.EXIT);
+        getConsoleManager().setExit(false);
+        return "Программа завершена";
     }
 }

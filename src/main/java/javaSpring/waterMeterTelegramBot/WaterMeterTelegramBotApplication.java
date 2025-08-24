@@ -1,5 +1,6 @@
 package javaSpring.waterMeterTelegramBot;
 
+import javaSpring.waterMeterTelegramBot.consoleMenu.ConsoleManager;
 import javaSpring.waterMeterTelegramBot.profiles.Profile;
 import javaSpring.waterMeterTelegramBot.profiles.Profiles;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +20,12 @@ public class WaterMeterTelegramBotApplication {
 		Profile profile = profiles.selectedProfile();
 		System.out.println("Выбран Профиль: {"+ profile.name() + " - " + profile.key() + "}");
 		return profile;
+	}
+
+	@Bean
+	public ConsoleManager resetConsoleManager(ConsoleManager consoleManager){
+		consoleManager.run();
+		return consoleManager;
 	}
 
 }

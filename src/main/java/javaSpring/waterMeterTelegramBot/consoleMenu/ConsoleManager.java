@@ -1,15 +1,17 @@
 package javaSpring.waterMeterTelegramBot.consoleMenu;
 
 
+import javaSpring.waterMeterTelegramBot.consoleMenu.commands.Exit;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.Help;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.ICommand;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
 import javaSpring.waterMeterTelegramBot.waterMeterManager.WaterMeterManager;
+import org.springframework.stereotype.Component;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
+@Component
 public class ConsoleManager {
     private final Map<String, ICommand> commands;
     private final WaterMeterManager waterMeterManager;
@@ -21,6 +23,7 @@ public class ConsoleManager {
         this.commands = new LinkedHashMap<>();
         this.consoleController = consoleController;
         addCommand(new Help("Help", this));
+        addCommand(new Exit("Exit", this));
     }
     public void addCommand(ICommand iCommand){
         commands.put(iCommand.getName().toLowerCase(), iCommand);
@@ -39,15 +42,26 @@ public class ConsoleManager {
     }
 
 
+
     public void commandCall(String command){
-        ICommand iCommand =  commands.get(command.toLowerCase());
+        String cleanCommand = cleanupCommand(command);
+        ICommand iCommand =  commands.get(cleanCommand);
         if(iCommand == null){
-            System.out.println("Команда не найдена!");
+            System.out.println("Команда " + cleanCommand + " не найдена!");
             return;
         }
-        iCommand.start("");
+        String message = iCommand.start(command);
+        System.out.println(message);
     }
 
+    public String cleanupCommand(String command){
+        int index = command.indexOf(' ');
+        if (index >0){
+            return command.substring(0, command.indexOf(' ')).toLowerCase();
+        }
+       return command.toLowerCase();
+
+    }
 
     public void run(){
         while(this.isExit) {
