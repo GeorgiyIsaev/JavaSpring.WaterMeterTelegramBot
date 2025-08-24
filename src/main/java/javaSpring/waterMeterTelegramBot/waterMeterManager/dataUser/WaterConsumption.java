@@ -1,4 +1,4 @@
-package javaSpring.waterMeterTelegramBot.waterMeterManager;
+package javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser;
 
 import java.util.Date;
 

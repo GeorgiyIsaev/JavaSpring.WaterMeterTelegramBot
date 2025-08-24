@@ -1,6 +1,7 @@
 package javaSpring.waterMeterTelegramBot.waterMeterManager;
 
 import javaSpring.waterMeterTelegramBot.profiles.Profile;
+import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.User;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -11,7 +12,7 @@ public class UsersManager {
 
     private final Profile profile;
 
-    Map<String,User> users;
+    Map<String, User> users;
 
     public UsersManager(Profile profile) {
         this.profile = profile;
