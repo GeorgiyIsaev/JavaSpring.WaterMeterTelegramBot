@@ -2,9 +2,9 @@ package javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands;
 
 import javaSpring.waterMeterTelegramBot.consoleMenu.ConsoleManager;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.CommandBase;
-import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.User;
-import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.WaterConsumption;
-import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.WaterConsumptionDay;
+import javaSpring.waterMeterTelegramBot.dataUser.User;
+import javaSpring.waterMeterTelegramBot.dataUser.WaterConsumption;
+import javaSpring.waterMeterTelegramBot.dataUser.WaterConsumptionDay;
 
 public class InfoUser extends CommandBase {
 

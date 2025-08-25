@@ -3,7 +3,7 @@ package javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands;
 
 import javaSpring.waterMeterTelegramBot.consoleMenu.ConsoleManager;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.CommandBase;
-import javaSpring.waterMeterTelegramBot.waterMeterManager.dataUser.User;
+import javaSpring.waterMeterTelegramBot.dataUser.User;
 
 public class DrunkWater extends CommandBase {
 
@@ -30,10 +30,8 @@ public class DrunkWater extends CommandBase {
         } catch (NumberFormatException e) {
             return "Ошибка передачи данных о выпитой воде!";
         }
-        User user = this.getConsoleManager().getUsersManager().getUserOrCreateIfNot(splited[2]);
-
-        user.addDrunkWater(drinkWater);
-        return user.getName() + " выпил " + drinkWater;
+        User user = this.getConsoleManager().getUsersManager().waterDrunkUser(splited[2], drinkWater);
+        return user.getName() + " выпил " + drinkWater + " мл воды";
     }
 
 
