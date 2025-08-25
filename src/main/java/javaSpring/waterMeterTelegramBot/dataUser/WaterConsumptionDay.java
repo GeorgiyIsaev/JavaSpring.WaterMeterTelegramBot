@@ -1,9 +1,12 @@
 package javaSpring.waterMeterTelegramBot.dataUser;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@JsonAutoDetect
 public class WaterConsumptionDay {
     private final Date date;
 
@@ -12,6 +15,10 @@ public class WaterConsumptionDay {
     public WaterConsumptionDay(Date date) {
         this.date = date;
         this.consumes = new ArrayList<>();
+    }
+    public WaterConsumptionDay(Date date, List<WaterConsumption> consumes) {
+        this.date = date;
+        this.consumes = consumes;
     }
 
     public Date getDate() {

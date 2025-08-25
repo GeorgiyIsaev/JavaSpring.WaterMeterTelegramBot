@@ -1,33 +1,42 @@
 package javaSpring.waterMeterTelegramBot.dataUser;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
 import java.util.List;
 
+@JsonAutoDetect
 public class User {
     private String name;
-    private double weight;
+    private int weight;
     private List<WaterConsumptionDay> calendars;
 
 
-    public User(String name, double weight) {
+    public User(String name, int weight) {
         this.name = name;
         this.weight = weight;
         calendars = new ArrayList<>();
+    }
+
+    public User(String name, int weight, List<WaterConsumptionDay> calendars) {
+        this.name = name;
+        this.weight = weight;
+        this.calendars = calendars;
     }
 
     public String getName() {
         return name;
     }
 
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
