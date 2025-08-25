@@ -3,6 +3,7 @@ package javaSpring.waterMeterTelegramBot.storingUserData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javaSpring.waterMeterTelegramBot.dataUser.User;
 import javaSpring.waterMeterTelegramBot.profiles.files.FileException;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +12,14 @@ import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+@Component
 public class SaveFileUser {
     Path pathCatalog;
-    public SaveFileUser(Path pathCatalog) {
-        this.pathCatalog = pathCatalog;
+   // public SaveFileUser(Path pathCatalog) {
+   //     this.pathCatalog = pathCatalog;
+ //   }
+    public SaveFileUser() {
+        this.pathCatalog = Path.of("data");
     }
 
     private void createDirectoriesIfNotExists(Path userFile) {

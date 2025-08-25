@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@Component
-public class UsersManager {
+
+public class UsersManager implements IUsersManager{
     private final Profile profile;
     Map<String, User> users;
 
@@ -20,8 +20,12 @@ public class UsersManager {
         users = new HashMap<>();
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
 
     ///  Создание или вызов Пользователя
+    @Override
     public User getUserOrCreateIfNot(String nameUser){
         User user = getUser(nameUser);
         if(user == null){
@@ -29,14 +33,17 @@ public class UsersManager {
         }
         return user;
     }
+    @Override
     public User getUser(String nameUser){
         return users.get(nameUser);
     }
+    @Override
     public User createUser(String nameUser, int weight){
         User user = new User(nameUser, weight);
         users.put(nameUser, user);
         return user;
     }
+    @Override
     public User createUser(String nameUser){
         User user = new User(nameUser, 0);
         users.put(nameUser, user);
@@ -44,6 +51,7 @@ public class UsersManager {
     }
 
     ///  Изменение веса пользователя
+    @Override
     public User setWeightToUser(String nameUser, int weight){
         User user = getUser(nameUser);
         if(user != null){
@@ -53,6 +61,7 @@ public class UsersManager {
     }
 
     /// Запись информации о выпитой воде
+    @Override
     public User waterDrunkUser(String nameUser, int countDrunkWaterMl){
         User user = getUserOrCreateIfNot(nameUser);
         user.addDrunkWater(countDrunkWaterMl);

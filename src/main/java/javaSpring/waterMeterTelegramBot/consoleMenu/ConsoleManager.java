@@ -9,6 +9,8 @@ import javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands.InfoUs
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands.SetUserWeight;
 import javaSpring.waterMeterTelegramBot.consoleMenu.commands.userCommands.ShowCountWaterPresentDay;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
+import javaSpring.waterMeterTelegramBot.waterMeterManager.IUsersManager;
+import javaSpring.waterMeterTelegramBot.waterMeterManager.UserFileManager;
 import javaSpring.waterMeterTelegramBot.waterMeterManager.UsersManager;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +20,11 @@ import java.util.Map;
 @Component
 public class ConsoleManager {
     private final Map<String, ICommand> commands;
-    private final UsersManager usersManager;
+    private final IUsersManager usersManager;
     private boolean isExit = true;
     private final ConsoleController consoleController;
 
-    public ConsoleManager(UsersManager usersManager, ConsoleController consoleController) {
+    public ConsoleManager(IUsersManager usersManager, ConsoleController consoleController) {
         this.usersManager = usersManager;
         this.commands = new LinkedHashMap<>();
         this.consoleController = consoleController;
@@ -45,7 +47,7 @@ public class ConsoleManager {
         return commands;
     }
 
-    public UsersManager getUsersManager() {
+    public IUsersManager getUsersManager() {
         return usersManager;
     }
 
