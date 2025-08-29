@@ -1,6 +1,7 @@
 package javaSpring.waterMeterTelegramBot.profiles;
 
 
+import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.profiles.files.LoaderProfiles;
 import javaSpring.waterMeterTelegramBot.profiles.files.SaverProfiles;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
