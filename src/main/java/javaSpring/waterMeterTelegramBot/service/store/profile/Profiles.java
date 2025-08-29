@@ -1,9 +1,9 @@
-package javaSpring.waterMeterTelegramBot.profiles;
+package javaSpring.waterMeterTelegramBot.service.store.profile;
 
 
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
-import javaSpring.waterMeterTelegramBot.profiles.files.LoaderProfiles;
-import javaSpring.waterMeterTelegramBot.profiles.files.SaverProfiles;
+import javaSpring.waterMeterTelegramBot.repository.profile.LoaderProfiles;
+import javaSpring.waterMeterTelegramBot.repository.profile.SaverProfiles;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package javaSpring.waterMeterTelegramBot.service.store;
+package javaSpring.waterMeterTelegramBot.service.store.user;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;

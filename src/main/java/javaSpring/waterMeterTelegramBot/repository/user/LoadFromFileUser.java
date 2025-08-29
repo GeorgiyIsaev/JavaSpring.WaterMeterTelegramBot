@@ -2,16 +2,13 @@ package javaSpring.waterMeterTelegramBot.repository.user;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
-import javaSpring.waterMeterTelegramBot.profiles.files.FileException;
+import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class LoadFromFileUser implements LoaderUser {

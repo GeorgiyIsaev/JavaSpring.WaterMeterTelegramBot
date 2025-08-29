@@ -3,7 +3,7 @@ import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.user.LoadFromFileUser;
 import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
-import javaSpring.waterMeterTelegramBot.service.store.UsersStore;
+import javaSpring.waterMeterTelegramBot.service.store.user.UsersStore;
 import javaSpring.waterMeterTelegramBot.storingUserData.SaveFileUser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package javaSpring.waterMeterTelegramBot.profiles.files;
+package javaSpring.waterMeterTelegramBot.repository.exeption;
 
 public class FileException extends RuntimeException {
 
