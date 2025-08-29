@@ -1,4 +1,4 @@
-package javaSpring.waterMeterTelegramBot.service;
+package javaSpring.waterMeterTelegramBot.service.contoller;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.data.user.WaterDrunk;
@@ -12,12 +12,6 @@ import java.util.List;
 
 @Service
 public class UserController {
-
-    public User createUser(String name, int weight){
-        List<WaterDrunksForDay> calendarWaterDrunk = new ArrayList<>();
-        User user = new User(name,weight, calendarWaterDrunk);
-        return user;
-    }
 
     public String infoUser (User user){
         return "Пользователь" + user.name() + " Вес: " + user.weight();
@@ -37,13 +31,13 @@ public class UserController {
         WaterDrunksForDay waterDrunksForDay;
 
         if(user.calendarWaterDrunk().isEmpty()){
-            System.out.println("isEmpty");
-            createNewDayDrunk(user,localDateNow);
+           // System.out.println("isEmpty");
+            return createNewDayDrunk(user,localDateNow);
         }
         waterDrunksForDay = user.calendarWaterDrunk().getLast();
         if(!waterDrunksForDay.date().equals(localDateNow)){
-            System.out.println("!equals");
-            createNewDayDrunk(user,localDateNow);
+           // System.out.println("!equals");
+            waterDrunksForDay = createNewDayDrunk(user,localDateNow);
         }
 
         return waterDrunksForDay;
@@ -63,5 +57,4 @@ public class UserController {
         }
         return countWater;
     }
-
 }
