@@ -53,6 +53,9 @@ public class WaterMeterTelegramBotApplication {
 		int countWater2 = usersManager.countDrunkForDay(user);
 		System.out.println("Всего воды выпито за день: " + countWater2);
 
+
+		System.out.println("Фул инфо: " + usersManager.fullInfoUser(user));
+
 		Profile profile = new Profile("Тестовое имя", "Ключ");
 		save.save(profile,user);
 		return user;

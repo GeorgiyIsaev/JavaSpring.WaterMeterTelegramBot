@@ -2,6 +2,7 @@ package javaSpring.waterMeterTelegramBot.storingUserData;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.profiles.files.FileException;
@@ -45,6 +46,9 @@ public class SaveFileUser implements SaverUser {
 
 
         ObjectMapper mapper = new ObjectMapper();
+
+        mapper.registerModule(new JavaTimeModule());
+        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         //mapper.enable(SerializationFeature.INDENT_OUTPUT); //разрешить перенос по строкам
         try {
             mapper.writeValue(pathUser.toFile(), user);
