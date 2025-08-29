@@ -3,6 +3,7 @@ import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.user.LoadFromFileUser;
 import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
+import javaSpring.waterMeterTelegramBot.service.store.profile.ProfilesStore;
 import javaSpring.waterMeterTelegramBot.service.store.user.UsersStore;
 import javaSpring.waterMeterTelegramBot.storingUserData.SaveFileUser;
 import org.springframework.boot.SpringApplication;
@@ -68,10 +69,13 @@ public class WaterMeterTelegramBotApplication {
 		else {
 			System.out.println("Фул инфо userLod: " + usersManager.fullInfoUser(userLod));
 		}
-
-
-
 		return user;
+	}
 
+	@Bean
+	public Profile createProFile(ProfilesStore profilesStore){
+		Profile profile = profilesStore.currentProfile();
+		System.out.println("Выбран профиль " + profile.name() + "  - ключ: " + profile.key());
+		return profile;
 	}
 }
