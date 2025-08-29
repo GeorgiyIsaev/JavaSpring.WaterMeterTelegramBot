@@ -21,10 +21,11 @@ public class ProfileSelectFromConsole implements ProfilesStore {
 
     public ProfileSelectFromConsole(ConsoleController console, LoaderProfiles loaderProfiles, SaverProfile saverProfiles) {
         this.console = console;
-        this.loaderProfiles = loaderProfiles;
         this.saverProfiles = saverProfiles;
         this.profiles = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        loaderProfiles.load(this.profiles);
+
+        this.loaderProfiles = loaderProfiles;
+        this.loaderProfiles.load(this.profiles);
     }
 
     @Override
