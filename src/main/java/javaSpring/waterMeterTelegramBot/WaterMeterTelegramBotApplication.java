@@ -1,10 +1,14 @@
 package javaSpring.waterMeterTelegramBot;
+import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
 import javaSpring.waterMeterTelegramBot.service.store.UsersStore;
+import javaSpring.waterMeterTelegramBot.storingUserData.SaveFileUser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.nio.file.Path;
 
 
 @SpringBootApplication
@@ -14,15 +18,16 @@ public class WaterMeterTelegramBotApplication {
 		SpringApplication.run(WaterMeterTelegramBotApplication.class, args);
 	}
 
+	@Bean
+	public Path createSaveFileUser(){
+		return Path.of("data");
+	}
 //	@Bean
-//	public SaveFileUser createSaveFileUser(){
-//		return new SaveFileUser(Path.of("data"));
-//	}
-//	@Bean
-//	public Profile createProfile(Profiles profiles){
-//		Profile profile = profiles.selectedProfile();
-//		System.out.println("Выбран Профиль: {"+ profile.name() + " - " + profile.key() + "}");
-//		return profile;
+//	public SaveFileUser createProfile(SaveFileUser save){
+//		Path newPath = save.pathForUser("dwqd","dwewd");
+//
+//		System.out.println("newPath: "+ newPath);
+//		return save;
 //	}
 
 //	@Bean
@@ -34,7 +39,7 @@ public class WaterMeterTelegramBotApplication {
 
 
 	@Bean
-	public User resetConsoleManager(UsersStore usersStore){
+	public User resetConsoleManager(UsersStore usersStore, SaveFileUser save){
 		User user = usersStore.getUserOrCreateIfNot("Витя");
 
 		UserController usersManager = new UserController();
@@ -47,7 +52,10 @@ public class WaterMeterTelegramBotApplication {
 		usersManager.drunkWater(user, 250);
 		int countWater2 = usersManager.countDrunkForDay(user);
 		System.out.println("Всего воды выпито за день: " + countWater2);
-		return user;
-	}
 
+		Profile profile = new Profile("Тестовое имя", "Ключ");
+		save.save(profile,user);
+		return user;
+
+	}
 }
