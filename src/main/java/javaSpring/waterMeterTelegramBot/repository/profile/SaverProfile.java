@@ -2,8 +2,8 @@ package javaSpring.waterMeterTelegramBot.repository.profile;
 
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 
-import java.util.Map;
+import java.nio.file.Path;
 
-public interface LoaderProfiles {
-    void load(Map<String, Profile> profiles);
+public interface SaverProfile {
+    void save(Profile profile);
 }
