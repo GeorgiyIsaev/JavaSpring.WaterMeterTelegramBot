@@ -1,6 +1,7 @@
 package javaSpring.waterMeterTelegramBot;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
+import javaSpring.waterMeterTelegramBot.repository.user.LoadFromFileUser;
 import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
 import javaSpring.waterMeterTelegramBot.service.store.UsersStore;
 import javaSpring.waterMeterTelegramBot.storingUserData.SaveFileUser;
@@ -58,6 +59,18 @@ public class WaterMeterTelegramBotApplication {
 
 		Profile profile = new Profile("Тестовое имя", "Ключ");
 		save.save(profile,user);
+
+		LoadFromFileUser load = new LoadFromFileUser(Path.of("data"), profile);
+		User userLod = load.load("Витя");
+		if(userLod == null){
+			System.out.println("Юзер не найден");
+		}
+		else {
+			System.out.println("Фул инфо userLod: " + usersManager.fullInfoUser(userLod));
+		}
+
+
+
 		return user;
 
 	}
