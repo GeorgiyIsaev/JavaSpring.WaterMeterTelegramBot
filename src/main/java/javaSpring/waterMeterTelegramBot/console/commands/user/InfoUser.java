@@ -1,6 +1,6 @@
-package javaSpring.waterMeterTelegramBot.commands.user;
+package javaSpring.waterMeterTelegramBot.console.commands.user;
 
-import javaSpring.waterMeterTelegramBot.commands.base.ICommand;
+import javaSpring.waterMeterTelegramBot.console.commands.base.ICommand;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 
 public class InfoUser implements ICommand {

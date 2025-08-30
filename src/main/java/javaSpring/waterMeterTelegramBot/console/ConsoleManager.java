@@ -1,12 +1,12 @@
 package javaSpring.waterMeterTelegramBot.console;
 
 import jakarta.annotation.PostConstruct;
-import javaSpring.waterMeterTelegramBot.commands.base.Help;
-import javaSpring.waterMeterTelegramBot.commands.base.ICommand;
-import javaSpring.waterMeterTelegramBot.commands.user.DrunkWater;
-import javaSpring.waterMeterTelegramBot.commands.user.InfoUser;
-import javaSpring.waterMeterTelegramBot.commands.user.SetUserWeight;
-import javaSpring.waterMeterTelegramBot.commands.user.ShowCountWaterPresentDay;
+import javaSpring.waterMeterTelegramBot.console.commands.base.Help;
+import javaSpring.waterMeterTelegramBot.console.commands.base.ICommand;
+import javaSpring.waterMeterTelegramBot.console.commands.user.DrunkWater;
+import javaSpring.waterMeterTelegramBot.console.commands.user.InfoUser;
+import javaSpring.waterMeterTelegramBot.console.commands.user.SetUserWeight;
+import javaSpring.waterMeterTelegramBot.console.commands.user.ShowCountWaterPresentDay;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.service.contoller.UserController;

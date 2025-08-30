@@ -1,4 +1,4 @@
-package javaSpring.waterMeterTelegramBot.commands.base;
+package javaSpring.waterMeterTelegramBot.console.commands.base;
 
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
