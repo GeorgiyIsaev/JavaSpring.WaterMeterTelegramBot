@@ -64,7 +64,8 @@ public class ConsoleManager {
             System.out.println("parseCommand.nameCommand()" +parseCommand.nameCommand());
             ICommand commandCell = commands.get(parseCommand.nameCommand().toLowerCase());
             if (commandCell != null){
-                commandCell.start(parseCommand.user(), parseCommand.message());
+                String outputMessage = commandCell.start(parseCommand.user(), parseCommand.message());
+                System.out.println(outputMessage);
             }
             else {
                 System.out.println("Команда \"" + parseCommand.nameCommand() + "\" не распознана!");
