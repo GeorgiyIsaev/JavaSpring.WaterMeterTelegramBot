@@ -5,12 +5,14 @@ import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;
 import javaSpring.waterMeterTelegramBot.repository.user.LoaderUsers;
 import javaSpring.waterMeterTelegramBot.repository.user.SaverUser;
 import javaSpring.waterMeterTelegramBot.service.store.profile.ProfilesStore;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class UsersFileStore implements UsersStore{
     private Map<String, User> users;
     LoaderUsers loaderUser;

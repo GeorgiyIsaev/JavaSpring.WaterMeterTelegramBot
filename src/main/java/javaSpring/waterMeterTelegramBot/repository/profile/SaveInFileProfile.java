@@ -23,7 +23,7 @@ public class SaveInFileProfile implements SaverProfile {
 
 
     private void createDirectoriesIfNotExists() {
-        Path directory = pathCatalog.getParent();
+        Path directory = pathCatalog;
         if(directory != null && !Files.isDirectory(directory)){
             try {
                 Files.createDirectories(directory);

@@ -28,7 +28,7 @@ public class WaterMeterTelegramBotApplication {
 //	}
 
 //	@Bean
-//	public ConsoleManager resetConsoleManager(ConsoleManager consoleManager){
+//	public ConsoleManagerOld resetConsoleManager(ConsoleManagerOld consoleManager){
 //		consoleManager.run();
 //		return consoleManager;
 //	}
@@ -67,10 +67,10 @@ public class WaterMeterTelegramBotApplication {
 //		return user;
 //	}
 
-	@Bean
-	public Profile createProFile(ProfilesStore profilesStore){
-		Profile profile = profilesStore.currentProfile();
-		System.out.println("Выбран профиль " + profile.name() + "  - ключ: " + profile.key());
-		return profile;
-	}
+//	@Bean
+//	public Profile createProFile(ProfilesStore profilesStore){
+//		Profile profile = profilesStore.currentProfile();
+//		System.out.println("Выбран профиль " + profile.name() + "  - ключ: " + profile.key());
+//		return profile;
+//	}
 }

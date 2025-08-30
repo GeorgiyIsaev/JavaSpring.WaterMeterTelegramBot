@@ -8,13 +8,13 @@ import java.util.List;
 public record User(String name,
                    int weight,
                    List<WaterDrunksForDay> calendarWaterDrunk){
-    public String infoUser (User user){
-        return "Пользователь" + user.name() + " Вес: " + user.weight();
+    public String infoUser (){
+        return "Пользователь" + name() + " Вес: " + weight();
     }
 
-    public String fullInfoUser (User user){
-        StringBuilder text = new StringBuilder("Пользователь" + user.name() + " Вес: " + user.weight() + "\n");
-        for (WaterDrunksForDay day : user.calendarWaterDrunk()){
+    public String fullInfoUser (){
+        StringBuilder text = new StringBuilder("Пользователь" + name() + " Вес: " + weight() + "\n");
+        for (WaterDrunksForDay day : calendarWaterDrunk()){
             text.append("День: ");
             text.append(day.date());
             text.append("\n");

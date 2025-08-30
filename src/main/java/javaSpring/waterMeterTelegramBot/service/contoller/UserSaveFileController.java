@@ -3,7 +3,9 @@ package javaSpring.waterMeterTelegramBot.service.contoller;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 
 import javaSpring.waterMeterTelegramBot.storingUserData.SaveFileUser;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserSaveFileController implements UserController {
     private final UserController userController;
     private final SaveFileUser saveFileUser;
