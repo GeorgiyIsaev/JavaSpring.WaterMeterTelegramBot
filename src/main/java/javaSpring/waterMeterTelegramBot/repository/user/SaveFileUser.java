@@ -23,7 +23,6 @@ public class SaveFileUser implements SaverUser {
 
     private void createDirectoriesIfNotExists(Path userFile) {
         Path directory = userFile.getParent();
-        System.out.println("Путь проверки " + directory);
         if(directory != null && !Files.isDirectory(directory)){
             try {
                 Files.createDirectories(directory);

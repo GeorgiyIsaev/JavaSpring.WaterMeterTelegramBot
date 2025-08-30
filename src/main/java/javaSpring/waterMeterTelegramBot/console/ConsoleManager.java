@@ -55,13 +55,10 @@ public class ConsoleManager {
         while(true) {
             String message = consoleController.input("Введите команду: ");
             ParseCommand parseCommand = parseCommand(message);
-            System.out.println(parseCommand);
-
-
             if(isExit(parseCommand.nameCommand())){
                 break;
             }
-            System.out.println("parseCommand.nameCommand()" +parseCommand.nameCommand());
+
             ICommand commandCell = commands.get(parseCommand.nameCommand().toLowerCase());
             if (commandCell != null){
                 String outputMessage = commandCell.start(parseCommand.user(), parseCommand.message());
