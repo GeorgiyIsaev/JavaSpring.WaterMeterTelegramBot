@@ -1,8 +1,7 @@
 package javaSpring.waterMeterTelegramBot.service.contoller;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
-
-import javaSpring.waterMeterTelegramBot.storingUserData.SaveFileUser;
+import javaSpring.waterMeterTelegramBot.repository.user.SaveFileUser;
 import org.springframework.stereotype.Service;
 
 @Service

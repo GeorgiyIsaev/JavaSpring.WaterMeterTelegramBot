@@ -13,9 +13,6 @@ import java.util.List;
 @Service
 public class UserChangeController implements UserController {
 
-
-
-
     @Override
     public void drunkWater (User user, int countWaterMl){
         LocalDateTime localDateTimeNow = LocalDateTime.now();
@@ -31,12 +28,10 @@ public class UserChangeController implements UserController {
         WaterDrunksForDay waterDrunksForDay;
 
         if(user.calendarWaterDrunk().isEmpty()){
-           // System.out.println("isEmpty");
             return createNewDayDrunk(user,localDateNow);
         }
         waterDrunksForDay = user.calendarWaterDrunk().getLast();
         if(!waterDrunksForDay.date().equals(localDateNow)){
-           // System.out.println("!equals");
             waterDrunksForDay = createNewDayDrunk(user,localDateNow);
         }
 

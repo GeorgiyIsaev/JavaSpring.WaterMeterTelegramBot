@@ -3,11 +3,9 @@ package javaSpring.waterMeterTelegramBot.repository.user;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 import org.springframework.stereotype.Repository;
-import org.w3c.dom.ls.LSLoadEvent;
 
 import java.io.File;
 import java.io.IOException;

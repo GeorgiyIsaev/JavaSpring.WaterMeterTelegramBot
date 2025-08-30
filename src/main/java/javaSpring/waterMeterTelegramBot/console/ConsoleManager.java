@@ -23,9 +23,9 @@ import java.util.Map;
 @Service
 public class ConsoleManager {
     private final ConsoleController consoleController;
-    ProfilesStore profilesStore;
-    UsersStore usersStore;
-    UserController userController;
+    private final ProfilesStore profilesStore;
+    private final UsersStore usersStore;
+    private final UserController userController;
     private final Map<String, ICommand> commands;
 
     public ConsoleManager(UserSaveFileController userController, UsersFileStore usersStore, ProfilesStore profilesStore, ConsoleController consoleController) {

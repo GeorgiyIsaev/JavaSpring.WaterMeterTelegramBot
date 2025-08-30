@@ -1,12 +1,10 @@
-package javaSpring.waterMeterTelegramBot.storingUserData;
+package javaSpring.waterMeterTelegramBot.repository.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
-import javaSpring.waterMeterTelegramBot.repository.user.SaverUser;
 import org.springframework.stereotype.Component;
 
 import java.io.File;

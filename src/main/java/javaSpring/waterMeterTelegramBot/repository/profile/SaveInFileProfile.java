@@ -24,7 +24,7 @@ public class SaveInFileProfile implements SaverProfile {
 
     private void createDirectoriesIfNotExists() {
         Path directory = pathCatalog;
-        if(directory != null && !Files.isDirectory(directory)){
+        if (directory != null && !Files.isDirectory(directory)) {
             try {
                 Files.createDirectories(directory);
             } catch (IOException e) {
@@ -34,7 +34,7 @@ public class SaveInFileProfile implements SaverProfile {
     }
 
     @Override
-    public void save(Profile profile){
+    public void save(Profile profile) {
         createDirectoriesIfNotExists();
 
         Path profileFile = Path.of(pathCatalog + File.separator + profile.name() + ".json");
@@ -44,7 +44,6 @@ public class SaveInFileProfile implements SaverProfile {
             mapper.writeValue(profileFile.toFile(), profile);
         } catch (IOException e) {
             throw new FileException(e, "Исключние при чтении User из файла, класс: " + this.getClass().getSimpleName());
-                    }
+        }
     }
-
 }

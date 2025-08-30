@@ -6,7 +6,6 @@ import javaSpring.waterMeterTelegramBot.repository.profile.SaverProfile;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
