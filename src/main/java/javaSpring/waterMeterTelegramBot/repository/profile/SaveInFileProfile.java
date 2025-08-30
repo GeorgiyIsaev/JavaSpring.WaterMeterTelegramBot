@@ -18,7 +18,7 @@ public class SaveInFileProfile implements SaverProfile {
     private final Path pathCatalog;
 
     public SaveInFileProfile(Path pathCatalog) {
-        this.pathCatalog = pathCatalog;
+        this.pathCatalog = Path.of(pathCatalog + File.separator + "profiles");
     }
 
 

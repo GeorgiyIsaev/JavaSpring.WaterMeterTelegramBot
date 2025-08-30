@@ -35,13 +35,13 @@ public class SaveFileUser implements SaverUser {
         }
     }
 
-    public Path pathForUser(String nameProfile, String nameUser){
-        return Path.of( pathCatalog.toString() +  File.separator + nameProfile + File.separator +nameUser +".json");
+    public Path pathForUser(String nameUser){
+        return Path.of( pathCatalog.toString() +  File.separator + "user" + File.separator +nameUser +".json");
     }
 
     @Override
-    public void save(Profile profile, User user) {
-        Path pathUser = pathForUser(profile.name(), user.name());
+    public void save(User user) {
+        Path pathUser = pathForUser(user.name());
         createDirectoriesIfNotExists(pathUser);
 
 

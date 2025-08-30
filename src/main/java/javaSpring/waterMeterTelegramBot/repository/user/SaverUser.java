@@ -4,5 +4,5 @@ import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 
 public interface SaverUser {
-    void save(Profile profile, User user);
+    void save(User user);
 }

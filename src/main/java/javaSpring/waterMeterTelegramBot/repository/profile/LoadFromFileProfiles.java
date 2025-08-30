@@ -6,6 +6,7 @@ import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 import org.springframework.stereotype.Repository;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -17,7 +18,7 @@ public class LoadFromFileProfiles implements LoaderProfiles {
     private final Path pathCatalog;
 
     public LoadFromFileProfiles(Path pathCatalog) {
-        this.pathCatalog = pathCatalog;
+        this.pathCatalog = Path.of(pathCatalog + File.separator + "profiles");
     }
 
     @Override
