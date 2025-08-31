@@ -7,7 +7,6 @@ import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 import javaSpring.waterMeterTelegramBot.repository.utils.PathInit;
 import org.springframework.stereotype.Repository;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;

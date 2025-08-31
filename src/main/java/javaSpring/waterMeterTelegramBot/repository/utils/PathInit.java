@@ -1,6 +1,7 @@
 package javaSpring.waterMeterTelegramBot.repository.utils;
 
 
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -26,4 +27,6 @@ public class PathInit {
     public Path getPathProfiles(){
         return Path.of(nameDataMain+ File.separator +nameProfilesCatalog);
     }
+
+
 }

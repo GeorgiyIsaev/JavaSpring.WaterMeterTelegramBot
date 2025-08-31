@@ -1,12 +1,6 @@
 package javaSpring.waterMeterTelegramBot;
-import javaSpring.waterMeterTelegramBot.data.profile.Profile;
-import javaSpring.waterMeterTelegramBot.repository.utils.PathInit;
-import javaSpring.waterMeterTelegramBot.service.store.profile.ProfilesStore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.nio.file.Path;
 
 
 @SpringBootApplication
