@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
+import javaSpring.waterMeterTelegramBot.repository.utils.PathInit;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -18,8 +19,8 @@ import java.util.Map;
 public class LoadFromFileUsers implements LoaderUsers {
     private Path pathCatalog;
 
-    public LoadFromFileUsers(Path pathCatalog) {
-        this.pathCatalog = Path.of(pathCatalog + File.separator + "users");
+    public LoadFromFileUsers(PathInit pathInit) {
+        this.pathCatalog = pathInit.getPathUsers();
     }
 
     @Override

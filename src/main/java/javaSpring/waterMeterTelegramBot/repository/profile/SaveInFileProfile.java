@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
+import javaSpring.waterMeterTelegramBot.repository.utils.PathInit;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -17,8 +18,8 @@ public class SaveInFileProfile implements SaverProfile {
 
     private final Path pathCatalog;
 
-    public SaveInFileProfile(Path pathCatalog) {
-        this.pathCatalog = Path.of(pathCatalog + File.separator + "profiles");
+    public SaveInFileProfile(PathInit pathInit) {
+        this.pathCatalog = pathInit.getPathProfiles();
     }
 
 
