@@ -15,6 +15,8 @@ import javaSpring.waterMeterTelegramBot.service.store.profile.ProfilesStore;
 import javaSpring.waterMeterTelegramBot.service.store.user.UsersFileStore;
 import javaSpring.waterMeterTelegramBot.service.store.user.UsersStore;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -25,19 +27,21 @@ public class ConsoleManager {
     private final ConsoleController consoleController;
     private final ProfilesStore profilesStore;
     private final UsersStore usersStore;
-    private final UserController userController;
     private final Map<String, ICommand> commands;
 
-    public ConsoleManager(UserSaveFileController userController, UsersFileStore usersStore, ProfilesStore profilesStore, ConsoleController consoleController) {
-        this.userController = userController;
+    @Autowired
+    public ConsoleManager(@Qualifier("userSaveFileController") UserController userController,
+                          @Qualifier("usersFileStore") UsersStore usersStore,
+                          @Qualifier("profileSelectFromConsole") ProfilesStore profilesStore,
+                          ConsoleController consoleController){
         this.usersStore = usersStore;
         this.profilesStore = profilesStore;
         this.consoleController = consoleController;
         this.commands = new LinkedHashMap<>();
-        generateCommand();
+        generateCommand(userController);
     }
 
-    private void generateCommand() {
+    private void generateCommand(UserController userController) {
         addCommand(new Help("Help", commands));
         addCommand(new DrunkWater("Выпил", userController));
         addCommand(new InfoUser("Показать"));
