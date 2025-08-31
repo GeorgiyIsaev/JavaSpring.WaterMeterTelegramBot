@@ -3,7 +3,10 @@ package javaSpring.waterMeterTelegramBot.service.store.profile;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.repository.profile.LoaderProfiles;
 import javaSpring.waterMeterTelegramBot.repository.profile.SaverProfile;
+import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
 import javaSpring.waterMeterTelegramBot.utils.ConsoleController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -13,18 +16,20 @@ import java.util.TreeMap;
 public class ProfileSelectFromConsole implements ProfilesStore {
     private final Map<String, Profile> profiles;
     private final ConsoleController console;
-    private final LoaderProfiles loaderProfiles;
     private final SaverProfile saverProfiles;
 
     private Profile currentProfile;
 
-    public ProfileSelectFromConsole(ConsoleController console, LoaderProfiles loaderProfiles, SaverProfile saverProfiles) {
+    @Autowired
+    public ProfileSelectFromConsole(
+            @Qualifier("loadFromFileProfiles") LoaderProfiles loaderProfiles,
+            @Qualifier("saveInFileProfile") SaverProfile saverProfiles,
+            ConsoleController console) {
         this.console = console;
         this.saverProfiles = saverProfiles;
         this.profiles = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
-        this.loaderProfiles = loaderProfiles;
-        this.loaderProfiles.load(this.profiles);
+        loaderProfiles.load(this.profiles);
     }
 
     @Override

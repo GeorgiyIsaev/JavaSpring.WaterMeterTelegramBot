@@ -2,8 +2,11 @@ package javaSpring.waterMeterTelegramBot.service.store.user;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;
+import javaSpring.waterMeterTelegramBot.repository.profile.LoaderProfiles;
 import javaSpring.waterMeterTelegramBot.repository.user.LoaderUsers;
 import javaSpring.waterMeterTelegramBot.repository.user.SaverUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,12 +17,12 @@ import java.util.Map;
 @Service
 public class UsersFileStore implements UsersStore{
     private final Map<String, User> users;
-    private final LoaderUsers loaderUser;
     private final SaverUser saverUser;
 
-
-    public UsersFileStore(LoaderUsers loaderUser, SaverUser saverUser) {
-        this.loaderUser = loaderUser;
+    @Autowired
+    public UsersFileStore(
+            @Qualifier("loadFromFileUsers") LoaderUsers loaderUser,
+            @Qualifier("saveFileUser") SaverUser saverUser) {
         this.saverUser = saverUser;
 
         this.users = new HashMap<>();
