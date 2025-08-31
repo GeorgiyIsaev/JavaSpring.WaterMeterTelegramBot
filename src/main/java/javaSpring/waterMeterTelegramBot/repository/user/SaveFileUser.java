@@ -35,7 +35,7 @@ public class SaveFileUser implements SaverUser {
     }
 
     public Path pathForUser(String nameUser){
-        return Path.of( pathCatalog.toString() +  File.separator + "user" + File.separator +nameUser +".json");
+        return Path.of( pathCatalog.toString() + File.separator +nameUser +".json");
     }
 
     @Override

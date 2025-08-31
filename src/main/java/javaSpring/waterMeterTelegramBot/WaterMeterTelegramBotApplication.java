@@ -16,6 +16,20 @@ public class WaterMeterTelegramBotApplication {
 		SpringApplication.run(WaterMeterTelegramBotApplication.class, args);
 	}
 
+//	@Bean
+//	public Path createSaveFileUser(){
+//		return Path.of("data");
+//	}
+//
+//	@Bean
+//	public PathInit getPath(PathInit pathInit){
+//		System.out.println(pathInit.getPathProfiles());
+//		System.out.println(pathInit.getPathUsers());
+//		return pathInit;
+//	}
+
+
+
 
 //	@Bean
 //	public SaveFileUser createProfile(SaveFileUser save){
