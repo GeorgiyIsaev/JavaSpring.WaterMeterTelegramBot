@@ -1,12 +1,13 @@
 package javaSpring.waterMeterTelegramBot.service.MY_TEST_wrapper;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
-@Component
+@Service
 public class UsersWrappersInMemoryStory implements UsersWrappersStore{
     private final Map<String, UserWrapper> users;
 

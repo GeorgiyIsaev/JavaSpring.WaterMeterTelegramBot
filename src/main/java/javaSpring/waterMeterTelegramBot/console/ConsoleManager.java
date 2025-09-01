@@ -17,12 +17,15 @@ import javaSpring.waterMeterTelegramBot.service.store.user.UsersStore;
 import javaSpring.waterMeterTelegramBot.console.utils.ConsoleController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperties;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Service
+//@ConditionalOnProperties(value="userconrol" )
 public class ConsoleManager {
     private final ConsoleController consoleController;
     private final ProfilesStore profilesStore;
@@ -30,7 +33,6 @@ public class ConsoleManager {
     private final Map<String, ICommand> commands;
     ApplicationShutdownManager applicationShutdownManager;
 
-    @Autowired
     public ConsoleManager(@Qualifier("userSaveFileController") UserController userController,
                           @Qualifier("usersFileStore") UsersStore usersStore,
                           @Qualifier("profileSelectFromConsole") ProfilesStore profilesStore,
