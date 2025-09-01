@@ -5,9 +5,10 @@ import javaSpring.waterMeterTelegramBot.repository.user.LoaderUsers;
 import javaSpring.waterMeterTelegramBot.repository.user.SaverUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 
+@Component
 public class UsersWrapperFileStore implements UsersWrappersStore{
     private final UsersWrappersStore usersWrappersStore;
     private final SaverUser saverUser;
