@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-//implements UsersStore
-public class UsersWrappersInMemoryStory {
+
+public class UsersWrappersInMemoryStory implements UsersWrappersStore{
     private Map<String, UserWrapper> users;
 
     public UsersWrappersInMemoryStory() {
         this.users = new HashMap<>();
     }
 
-//@Override
+    @Override
     public UserWrapper getUserOrCreateIfNot(String nameUser){
         UserWrapper user = getUser(nameUser);
         if(user == null){
@@ -20,17 +20,32 @@ public class UsersWrappersInMemoryStory {
         }
         return user;
     }
-  //  @Override
+    @Override
     public UserWrapper getUser(String nameUser){
         return users.get(nameUser);
     }
-  //  @Override
+    @Override
     public UserWrapper createUser(String nameUser, int weight){
         UserWrapper user = new UserWrapper(nameUser, weight);
         users.put(nameUser, user);
         return user;
     }
 
-    //изменение веса пользоватля теперь осуществляется во врапере
+    @Override
+    public UserWrapper setWeightToUser(String nameUser, int weight) {
+        UserWrapper user = getUser(nameUser);
+        user.setWeight(weight);;
+        return user;
+    }
+
+    @Override
+    public UserWrapper drunkWater(String nameUser, int drunkCountWaterMl) {
+        UserWrapper user = getUser(nameUser);
+        user.drunkWater(drunkCountWaterMl);;
+        return user;
+    }
 }
+
+
+
 

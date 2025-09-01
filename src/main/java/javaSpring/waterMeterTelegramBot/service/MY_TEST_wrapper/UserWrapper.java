@@ -26,7 +26,7 @@ public class UserWrapper {
         this.user = changeuser;
     }
 
-    public void drunkWater(User user, int countWaterMl) {
+    public void drunkWater(int countWaterMl) {
         LocalDateTime localDateTimeNow = LocalDateTime.now();
         LocalDate localDateNow = LocalDate.now();
         WaterDrunk waterDrunk = new WaterDrunk(localDateTimeNow, countWaterMl);
