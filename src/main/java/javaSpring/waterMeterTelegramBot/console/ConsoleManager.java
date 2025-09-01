@@ -7,6 +7,7 @@ import javaSpring.waterMeterTelegramBot.console.commands.user.DrunkWater;
 import javaSpring.waterMeterTelegramBot.console.commands.user.InfoUser;
 import javaSpring.waterMeterTelegramBot.console.commands.user.SetUserWeight;
 import javaSpring.waterMeterTelegramBot.console.commands.user.ShowCountWaterPresentDay;
+import javaSpring.waterMeterTelegramBot.console.utils.ApplicationShutdownManager;
 import javaSpring.waterMeterTelegramBot.console.utils.ParseCommand;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
@@ -27,15 +28,18 @@ public class ConsoleManager {
     private final ProfilesStore profilesStore;
     private final UsersStore usersStore;
     private final Map<String, ICommand> commands;
+    ApplicationShutdownManager applicationShutdownManager;
 
     @Autowired
     public ConsoleManager(@Qualifier("userSaveFileController") UserController userController,
                           @Qualifier("usersFileStore") UsersStore usersStore,
                           @Qualifier("profileSelectFromConsole") ProfilesStore profilesStore,
-                          ConsoleController consoleController){
+                          ConsoleController consoleController,
+                          ApplicationShutdownManager applicationShutdownManager){
         this.usersStore = usersStore;
         this.profilesStore = profilesStore;
         this.consoleController = consoleController;
+        this.applicationShutdownManager = applicationShutdownManager;
         this.commands = new LinkedHashMap<>();
         generateCommand(userController);
     }
@@ -87,6 +91,7 @@ public class ConsoleManager {
     }
 
     private void exit() {
+        applicationShutdownManager.initiateShutdown(0);
         System.out.println("Работа завершена!");
     }
 
