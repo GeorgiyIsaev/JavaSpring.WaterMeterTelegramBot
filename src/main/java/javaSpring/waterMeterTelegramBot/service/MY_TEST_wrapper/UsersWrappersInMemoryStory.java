@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Component
 public class UsersWrappersInMemoryStory implements UsersWrappersStore{
-    private Map<String, UserWrapper> users;
+    private final Map<String, UserWrapper> users;
 
     public UsersWrappersInMemoryStory() {
         this.users = new HashMap<>();
@@ -36,14 +36,14 @@ public class UsersWrappersInMemoryStory implements UsersWrappersStore{
     @Override
     public UserWrapper setWeightToUser(String nameUser, int weight) {
         UserWrapper user = getUser(nameUser);
-        user.setWeight(weight);;
+        user.setWeight(weight);
         return user;
     }
 
     @Override
     public UserWrapper drunkWater(String nameUser, int drunkCountWaterMl) {
         UserWrapper user = getUser(nameUser);
-        user.drunkWater(drunkCountWaterMl);;
+        user.drunkWater(drunkCountWaterMl);
         return user;
     }
 }

@@ -22,8 +22,7 @@ public class UserWrapper {
     }
 
     public void setWeight(int weight) {
-        User changeuser = new User(user.name(), weight, user.calendarWaterDrunk());
-        this.user = changeuser;
+        this.user = new User(user.name(), weight, user.calendarWaterDrunk());
     }
 
     public void drunkWater(int countWaterMl) {
