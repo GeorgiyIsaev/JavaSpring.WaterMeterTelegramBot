@@ -1,7 +1,8 @@
-package javaSpring.waterMeterTelegramBot.service.store.user;
+package javaSpring.waterMeterTelegramBot.repository.store;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,8 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Repository
 public class UsersInMemoryStore implements UsersStore{
+
     private Map<String, User> users;
 
     public UsersInMemoryStore() {
@@ -25,10 +27,12 @@ public class UsersInMemoryStore implements UsersStore{
         }
         return user;
     }
+
     @Override
     public User getUser(String nameUser){
         return users.get(nameUser);
     }
+
     @Override
     public User createUser(String nameUser, int weight){
         List<WaterDrunksForDay> calendarWaterDrunk = new ArrayList<>();
@@ -44,5 +48,4 @@ public class UsersInMemoryStore implements UsersStore{
         users.put(user.name(), changeuser);
         return user;
     }
-
 }

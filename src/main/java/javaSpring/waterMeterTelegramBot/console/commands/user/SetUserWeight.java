@@ -2,7 +2,7 @@ package javaSpring.waterMeterTelegramBot.console.commands.user;
 
 import javaSpring.waterMeterTelegramBot.console.commands.base.ICommand;
 import javaSpring.waterMeterTelegramBot.data.user.User;
-import javaSpring.waterMeterTelegramBot.service.store.user.UsersStore;
+import javaSpring.waterMeterTelegramBot.repository.store.UsersStore;
 
 public class SetUserWeight implements ICommand {
     private final String name;

@@ -2,7 +2,7 @@ package javaSpring.waterMeterTelegramBot.service.store.user;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;
-import javaSpring.waterMeterTelegramBot.repository.profile.LoaderProfiles;
+import javaSpring.waterMeterTelegramBot.repository.store.UsersStore;
 import javaSpring.waterMeterTelegramBot.repository.user.LoaderUsers;
 import javaSpring.waterMeterTelegramBot.repository.user.SaverUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class UsersFileStore implements UsersStore{
+public class UsersFileStore implements UsersStore {
     private final Map<String, User> users;
     private final SaverUser saverUser;
 

@@ -13,12 +13,9 @@ import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
 import javaSpring.waterMeterTelegramBot.service.store.profile.ProfilesStore;
-import javaSpring.waterMeterTelegramBot.service.store.user.UsersStore;
+import javaSpring.waterMeterTelegramBot.repository.store.UsersStore;
 import javaSpring.waterMeterTelegramBot.console.utils.ConsoleController;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperties;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
