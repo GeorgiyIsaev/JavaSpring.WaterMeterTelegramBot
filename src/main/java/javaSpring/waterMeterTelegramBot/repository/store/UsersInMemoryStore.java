@@ -13,10 +13,15 @@ import java.util.Map;
 @Repository
 public class UsersInMemoryStore implements UsersStore{
 
-    private Map<String, User> users;
+    private final Map<String, User> users;
 
     public UsersInMemoryStore() {
         this.users = new HashMap<>();
+    }
+
+    @Override
+    public Map<String, User> getUsers() {
+        return users;
     }
 
     @Override
@@ -43,9 +48,12 @@ public class UsersInMemoryStore implements UsersStore{
 
     ///  Изменение веса пользователя
     @Override
-    public User setWeightToUser(User user, int weight){
-        User changeuser = new User(user.name(), weight, user.calendarWaterDrunk());
-        users.put(user.name(), changeuser);
+    public User setWeightToUser(String nameUser, int newWeight){
+        User user = this.getUser(nameUser);
+        if(user != null) {
+            User changeuser = new User(user.name(), newWeight, user.calendarWaterDrunk());
+            users.put(user.name(), changeuser);
+        }
         return user;
     }
 }
