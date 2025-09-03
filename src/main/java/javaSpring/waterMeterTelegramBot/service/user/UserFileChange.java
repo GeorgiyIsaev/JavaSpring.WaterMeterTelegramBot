@@ -13,22 +13,27 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserFileChange implements UserChange{
+public class UserFileChange implements UserChange {
 
     private final UsersStore usersStore;
     private final SaverUser saverUser;
+    private final DrunkWater drunkWater;
 
     public UserFileChange(@Qualifier("usersInMemoryStore") UsersStore usersStore,
-                              @Qualifier("loadFromFileUsers") LoaderUsers loaderUser,
-                              @Qualifier("saveFileUser") SaverUser saverUser) {
+                          @Qualifier("loadFromFileUsers") LoaderUsers loaderUser,
+                          @Qualifier("saveFileUser") SaverUser saverUser,
+                          DrunkWater drunkWater) {
         this.usersStore = usersStore;
         this.saverUser = saverUser;
+        this.drunkWater = drunkWater;
         loaderUser.load(usersStore.getUsers());
     }
 
+    private final DrunkWater drunkWater;
 
-    public void save(User user){
-        if(user !=null) {
+
+    public void save(User user) {
+        if (user != null) {
             this.saverUser.save(user);
         }
     }
@@ -36,9 +41,7 @@ public class UserFileChange implements UserChange{
 
     @Override
     public User getUser(String nameUser) {
-       User user = usersStore.getUser(nameUser);
-       this.save(user);
-       return user;
+        return usersStore.getUser(nameUser);
     }
 
     @Override
@@ -50,10 +53,12 @@ public class UserFileChange implements UserChange{
 
     @Override
     public User getUserOrCreateIfNot(String nameUser) {
-        User user = usersStore.getUserOrCreateIfNot(nameUser);
-        this.save(user);
+        User user = this.getUser(nameUser);
+        if(user == null){
+            return this.createUser(nameUser, 0);
+        }
         return user;
-    }
+     }
 
     @Override
     public User setWeightToUser(String nameUser, int newWeight) {
@@ -63,53 +68,22 @@ public class UserFileChange implements UserChange{
     }
 
     @Override
-    public User drunkWater (String nameUser, int countWaterMl){
+    public User drunkWater(String nameUser, int countWaterMl) {
         User user = this.getUser(nameUser);
-        if(user == null) {
+        if (user == null) {
             return null;
         }
-        LocalDateTime localDateTimeNow = LocalDateTime.now();
-        WaterDrunk waterDrunk = new WaterDrunk(localDateTimeNow, countWaterMl);
-
-        WaterDrunksForDay waterDrunksForDay = getTodayDate(user);
-        waterDrunksForDay.waterDunks().add(waterDrunk);
+        this.drunkWater.drunkWater(user, countWaterMl);
         this.save(user);
         return user;
     }
 
-    public WaterDrunksForDay getTodayDate(User user){
-        LocalDate localDateNow = LocalDate.now();
-        WaterDrunksForDay waterDrunksForDay;
-
-        if(user.calendarWaterDrunk().isEmpty()){
-            return createNewDayDrunk(user,localDateNow);
-        }
-
-        waterDrunksForDay = user.calendarWaterDrunk().getLast();
-        if(!waterDrunksForDay.date().equals(localDateNow)){
-            waterDrunksForDay = createNewDayDrunk(user,localDateNow);
-        }
-
-        return waterDrunksForDay;
-    }
-    private WaterDrunksForDay createNewDayDrunk(User user, LocalDate localDateNow){
-        List<WaterDrunk> waterDunks = new ArrayList<>();
-        WaterDrunksForDay waterDrunksForDay = new WaterDrunksForDay(localDateNow, waterDunks);
-        user.calendarWaterDrunk().add(waterDrunksForDay);
-        return waterDrunksForDay;
-    }
-
     @Override
-    public int countDrunkForToday(String nameUser){
+    public int countDrunkForToday(String nameUser) {
         User user = this.getUser(nameUser);
-        if(user == null) {
+        if (user == null) {
             return -1;
         }
-        WaterDrunksForDay waterDrunksForDay = getTodayDate(user);
-        int countWater = 0;
-        for (WaterDrunk waterDrunk : waterDrunksForDay.waterDunks()){
-            countWater += waterDrunk.countWaterMl();
-        }
-        return countWater;
+        return this.drunkWater.countDrunkForToday(user);
     }
 }

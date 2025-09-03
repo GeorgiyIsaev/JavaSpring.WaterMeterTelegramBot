@@ -16,12 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserInMemoryChange implements UserChange{
+public class UserInMemoryChange implements UserChange {
 
     private final UsersStore usersStore;
+    private final DrunkWater drunkWater;
 
-    public UserInMemoryChange(@Qualifier("usersInMemoryStore") UsersStore usersStore) {
+    public UserInMemoryChange(@Qualifier("usersInMemoryStore") UsersStore usersStore,
+                              DrunkWater drunkWater) {
         this.usersStore = usersStore;
+        this.drunkWater = drunkWater;
     }
 
     @Override
@@ -45,52 +48,21 @@ public class UserInMemoryChange implements UserChange{
     }
 
     @Override
-    public User drunkWater (String nameUser, int countWaterMl){
+    public User drunkWater(String nameUser, int countWaterMl) {
         User user = this.getUser(nameUser);
-        if(user == null) {
-           return null;
+        if (user == null) {
+            return null;
         }
-        LocalDateTime localDateTimeNow = LocalDateTime.now();
-        WaterDrunk waterDrunk = new WaterDrunk(localDateTimeNow, countWaterMl);
-
-        WaterDrunksForDay waterDrunksForDay = getTodayDate(user);
-        waterDrunksForDay.waterDunks().add(waterDrunk);
+        this.drunkWater.drunkWater(user, countWaterMl);
         return user;
     }
 
-    public WaterDrunksForDay getTodayDate(User user){
-        LocalDate localDateNow = LocalDate.now();
-        WaterDrunksForDay waterDrunksForDay;
-
-        if(user.calendarWaterDrunk().isEmpty()){
-            return createNewDayDrunk(user,localDateNow);
-        }
-
-        waterDrunksForDay = user.calendarWaterDrunk().getLast();
-        if(!waterDrunksForDay.date().equals(localDateNow)){
-            waterDrunksForDay = createNewDayDrunk(user,localDateNow);
-        }
-
-        return waterDrunksForDay;
-    }
-    private WaterDrunksForDay createNewDayDrunk(User user, LocalDate localDateNow){
-        List<WaterDrunk> waterDunks = new ArrayList<>();
-        WaterDrunksForDay waterDrunksForDay = new WaterDrunksForDay(localDateNow, waterDunks);
-        user.calendarWaterDrunk().add(waterDrunksForDay);
-        return waterDrunksForDay;
-    }
-
     @Override
-    public int countDrunkForToday(String nameUser){
+    public int countDrunkForToday(String nameUser) {
         User user = this.getUser(nameUser);
-        if(user == null) {
+        if (user == null) {
             return -1;
         }
-        WaterDrunksForDay waterDrunksForDay = getTodayDate(user);
-        int countWater = 0;
-        for (WaterDrunk waterDrunk : waterDrunksForDay.waterDunks()){
-            countWater += waterDrunk.countWaterMl();
-        }
-        return countWater;
+       return this.drunkWater.countDrunkForToday(user);
     }
 }
