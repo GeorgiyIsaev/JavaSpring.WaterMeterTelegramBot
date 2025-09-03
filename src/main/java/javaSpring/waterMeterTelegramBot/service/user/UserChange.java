@@ -1,7 +1,6 @@
 package javaSpring.waterMeterTelegramBot.service.user;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
-import javaSpring.waterMeterTelegramBot.service.MY_TEST_wrapper.UserWrapper;
 
 public interface UserChange {
 

@@ -1,16 +1,16 @@
 package javaSpring.waterMeterTelegramBot.console.commands.user;
 
-import javaSpring.waterMeterTelegramBot.console.commands.base.ICommand;
+import javaSpring.waterMeterTelegramBot.console.commands.base.Command;
 import javaSpring.waterMeterTelegramBot.data.user.User;
-import javaSpring.waterMeterTelegramBot.repository.store.UsersStore;
+import javaSpring.waterMeterTelegramBot.service.user.UserChange;
 
-public class SetUserWeight implements ICommand {
+public class SetUserWeight implements Command {
     private final String name;
-    UsersStore usersStore;
+    UserChange userChange;
 
-    public SetUserWeight(String name, UsersStore usersStore) {
+    public SetUserWeight(String name, UserChange userChange) {
         this.name = name;
-        this.usersStore = usersStore;
+        this.userChange = userChange;
     }
 
 
@@ -25,25 +25,22 @@ public class SetUserWeight implements ICommand {
     }
 
     @Override
-    public String start(User user, String[] message) {
-        if(message.length <3){
-            return "Ошибка передачи данных при изменении веса!";
+    public String start(String message) {
+        String[] split = message.split(" ");
+        if(split.length <3){
+            return "Ошибка передачи данных о выпитой воде! Неполное сообщение";
         }
-
-        int weight;
+        int newWeight;
         try {
-            weight = Integer.parseInt(message[2]);
+            newWeight = Integer.parseInt(split[2]);
         } catch (NumberFormatException e) {
-            return "Ошибка передачи данных при изменении веса!";
+            return "Ошибка передачи данных о выпитой воде! Значение: " + split[2] + " не число!";
         }
-
+        User user = userChange.setWeightToUser(split[1],newWeight);
         if(user == null){
-            return "Пользователь не найден!";
+            return "Пользователь "+split[1]+" не найден!";
         }
-
-        User userChange = usersStore.setWeightToUser(user, weight);
-        return "Вес " + userChange.name() + " составляет " + userChange.weight();
+        return user.shortInfo();
     }
-
 
 }

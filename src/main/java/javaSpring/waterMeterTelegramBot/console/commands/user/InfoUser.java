@@ -1,13 +1,16 @@
 package javaSpring.waterMeterTelegramBot.console.commands.user;
 
-import javaSpring.waterMeterTelegramBot.console.commands.base.ICommand;
+import javaSpring.waterMeterTelegramBot.console.commands.base.Command;
 import javaSpring.waterMeterTelegramBot.data.user.User;
+import javaSpring.waterMeterTelegramBot.service.user.UserChange;
 
-public class InfoUser implements ICommand {
+public class InfoUser implements Command {
     private final String name;
+    UserChange userChange;
 
-    public InfoUser(String name) {
+    public InfoUser(String name, UserChange userChange) {
         this.name = name;
+        this.userChange = userChange;
     }
 
     @Override
@@ -21,10 +24,15 @@ public class InfoUser implements ICommand {
     }
 
     @Override
-    public String start(User user, String[] message) {
-        if (user != null){
-            return user.fullInfoUser();
+    public String start(String message) {
+        String[] split = message.split(" ");
+        if(split.length <2){
+            return "Ошибка передачи данных о выпитой воде! Неполное сообщение";
         }
-        return "Пользователь не найден!";
+        User user = userChange.getUser(split[1]);
+        if(user == null){
+            return "Пользователь "+split[1]+" не найден!";
+        }
+        return user.toString();
     }
 }

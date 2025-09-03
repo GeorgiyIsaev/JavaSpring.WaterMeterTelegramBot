@@ -1,18 +1,18 @@
 package javaSpring.waterMeterTelegramBot.console.commands.user;
 
 
-import javaSpring.waterMeterTelegramBot.console.commands.base.ICommand;
+import javaSpring.waterMeterTelegramBot.console.commands.base.Command;
 import javaSpring.waterMeterTelegramBot.data.user.User;
-import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
+import javaSpring.waterMeterTelegramBot.service.user.UserChange;
 
-public class DrunkWater implements ICommand {
+public class DrunkWater implements Command {
 
     private final String name;
-    UserController userController;
+    UserChange userChange;
 
-    public DrunkWater(String name, UserController userController) {
+    public DrunkWater(String name, UserChange userChange) {
         this.name = name;
-        this.userController = userController;
+        this.userChange = userChange;
     }
 
     @Override
@@ -26,24 +26,21 @@ public class DrunkWater implements ICommand {
     }
 
     @Override
-    public String start(User user, String[] message) {
-        if(message.length <3){
-            return "Ошибка передачи данных о выпитой воде!";
+    public String start(String message) {
+        String[] split = message.split(" ");
+        if(split.length <3){
+            return "Ошибка передачи данных о выпитой воде! Неполное сообщение";
         }
-
         int drinkWater;
         try {
-            drinkWater = Integer.parseInt(message[2]);
+            drinkWater = Integer.parseInt(split[2]);
         } catch (NumberFormatException e) {
-            return "Ошибка передачи данных о выпитой воде!";
+            return "Ошибка передачи данных о выпитой воде! Значение: " + split[2] + " не число!";
         }
-
+        User user = userChange.drunkWater(split[1],drinkWater);
         if(user == null){
-            return "Пользователь не найден!";
+            return "Пользователь "+split[1]+" не найден!";
         }
-        userController.drunkWater(user, drinkWater);
         return user.name() + " выпил " + drinkWater + " мл воды";
     }
-
-
 }

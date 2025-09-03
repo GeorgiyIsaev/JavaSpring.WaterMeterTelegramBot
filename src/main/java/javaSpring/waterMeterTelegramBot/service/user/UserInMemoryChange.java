@@ -1,19 +1,10 @@
 package javaSpring.waterMeterTelegramBot.service.user;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
-import javaSpring.waterMeterTelegramBot.data.user.WaterDrunk;
-import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;
 import javaSpring.waterMeterTelegramBot.repository.store.UsersStore;
-import javaSpring.waterMeterTelegramBot.repository.user.LoaderUsers;
-import javaSpring.waterMeterTelegramBot.repository.user.SaverUser;
-import javaSpring.waterMeterTelegramBot.service.MY_TEST_wrapper.UsersWrappersStore;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserInMemoryChange implements UserChange {

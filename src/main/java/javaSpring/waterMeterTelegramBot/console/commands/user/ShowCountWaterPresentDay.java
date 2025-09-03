@@ -1,19 +1,18 @@
 package javaSpring.waterMeterTelegramBot.console.commands.user;
 
 
-import javaSpring.waterMeterTelegramBot.console.commands.base.ICommand;
-import javaSpring.waterMeterTelegramBot.data.user.User;
-import javaSpring.waterMeterTelegramBot.service.contoller.UserController;
+import javaSpring.waterMeterTelegramBot.console.commands.base.Command;
+import javaSpring.waterMeterTelegramBot.service.user.UserChange;
 
 
-public class ShowCountWaterPresentDay implements ICommand {
+public class ShowCountWaterPresentDay implements Command {
 
     private final String name;
-    UserController userController;
+    UserChange userChange;
 
-    public ShowCountWaterPresentDay(String name, UserController userController) {
+    public ShowCountWaterPresentDay(String name, UserChange userChange) {
         this.name = name;
-        this.userController = userController;
+        this.userChange = userChange;
     }
 
     @Override
@@ -27,11 +26,15 @@ public class ShowCountWaterPresentDay implements ICommand {
     }
 
     @Override
-    public String start(User user, String[] message) {
-        if(user == null){
-            return "Пользователь не найден!";
+    public String start(String message) {
+        String[] split = message.split(" ");
+        if (split.length < 2) {
+            return "Ошибка передачи данных о выпитой воде! Неполное сообщение";
         }
-        int countDrunkForDay = userController.countDrunkForDay(user);
-        return user.name() + " выпил сегодня " + countDrunkForDay;
+        int countWaterToday = userChange.countDrunkForToday(split[1]);
+        if (countWaterToday < 0) {
+            return "Пользователь " + split[1] + " не найден!";
+        }
+        return "Пользователь " + split[1] + " выпил " + countWaterToday + " мл воды!";
     }
 }

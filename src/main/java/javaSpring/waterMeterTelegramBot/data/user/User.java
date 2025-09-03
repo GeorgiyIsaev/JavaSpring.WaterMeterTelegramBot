@@ -5,11 +5,12 @@ import java.util.List;
 public record User(String name,
                    int weight,
                    List<WaterDrunksForDay> calendarWaterDrunk){
-    public String infoUser (){
+    public String shortInfo (){
         return "Пользователь" + name() + " Вес: " + weight();
     }
 
-    public String fullInfoUser (){
+    @Override
+    public String toString (){
         StringBuilder text = new StringBuilder("Пользователь" + name() + " Вес: " + weight() + "\n");
         for (WaterDrunksForDay day : calendarWaterDrunk()){
             text.append("День: ");

@@ -28,7 +28,6 @@ public class DrunkWater {
 
         WaterDrunksForDay waterDrunksForDay = getTodayDate(user);
         waterDrunksForDay.waterDunks().add(waterDrunk);
-        return user;
     }
 
     private WaterDrunksForDay getTodayDate(User user){
