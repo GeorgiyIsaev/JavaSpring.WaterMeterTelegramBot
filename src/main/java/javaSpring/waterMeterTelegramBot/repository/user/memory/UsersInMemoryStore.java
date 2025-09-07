@@ -1,9 +1,8 @@
-package javaSpring.waterMeterTelegramBot.repository.store;
+package javaSpring.waterMeterTelegramBot.repository.user.memory;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;

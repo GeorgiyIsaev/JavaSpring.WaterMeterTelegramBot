@@ -1,4 +1,4 @@
-package javaSpring.waterMeterTelegramBot.repository.user;
+package javaSpring.waterMeterTelegramBot.repository.user.files;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

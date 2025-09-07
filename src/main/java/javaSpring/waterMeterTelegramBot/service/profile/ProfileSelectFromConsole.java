@@ -1,8 +1,8 @@
 package javaSpring.waterMeterTelegramBot.service.profile;
 
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
-import javaSpring.waterMeterTelegramBot.repository.profile.LoaderProfiles;
-import javaSpring.waterMeterTelegramBot.repository.profile.SaverProfile;
+import javaSpring.waterMeterTelegramBot.repository.profile.files.LoaderProfiles;
+import javaSpring.waterMeterTelegramBot.repository.profile.files.SaverProfile;
 import javaSpring.waterMeterTelegramBot.console.utils.ConsoleController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
