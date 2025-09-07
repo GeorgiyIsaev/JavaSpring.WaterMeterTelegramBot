@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.nio.file.Path;
 
-//@ConfigurationProperties(prefix = "pathConfiguration")
 @Component
+//@ConfigurationProperties(prefix = "pathConfiguration")
 public class PathConfiguration {
     @Value("${pathConfiguration.nameDataMain}")
     private String nameDataMain;

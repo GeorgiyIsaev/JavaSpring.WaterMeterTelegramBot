@@ -1,4 +1,4 @@
-package javaSpring.waterMeterTelegramBot.service.store.profile;
+package javaSpring.waterMeterTelegramBot.service.profile;
 
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.repository.profile.LoaderProfiles;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 @Service
-public class ProfileSelectFromConsole implements ProfilesStore {
+public class ProfileSelectFromConsole implements ProfileSelect {
     private final Map<String, Profile> profiles;
     private final ConsoleController console;
     private final SaverProfile saverProfiles;
@@ -54,7 +54,7 @@ public class ProfileSelectFromConsole implements ProfilesStore {
         }
         int count = 0;
         for (Profile profile : profiles.values()) {
-            System.out.println(count++ + ": {" + profile.name() + " - " + profile.key() + "};");
+            System.out.println(count++ + ": {" + profile.name() + " - " + profile.token() + "};");
         }
     }
 

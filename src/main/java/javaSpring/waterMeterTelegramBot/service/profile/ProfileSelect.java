@@ -1,8 +1,8 @@
-package javaSpring.waterMeterTelegramBot.service.store.profile;
+package javaSpring.waterMeterTelegramBot.service.profile;
 
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 
-public interface ProfilesStore {
+public interface ProfileSelect {
     Profile currentProfile();
 }
 

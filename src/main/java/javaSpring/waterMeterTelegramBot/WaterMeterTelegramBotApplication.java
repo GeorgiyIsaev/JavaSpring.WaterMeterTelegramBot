@@ -74,9 +74,9 @@ public class WaterMeterTelegramBotApplication {
 //	}
 
 //	@Bean
-//	public Profile createProFile(ProfilesStore profilesStore){
+//	public Profile createProFile(ProfileSelect profilesStore){
 //		Profile profile = profilesStore.currentProfile();
-//		System.out.println("Выбран профиль " + profile.name() + "  - ключ: " + profile.key());
+//		System.out.println("Выбран профиль " + profile.name() + "  - ключ: " + profile.token());
 //		return profile;
 //	}
 }
