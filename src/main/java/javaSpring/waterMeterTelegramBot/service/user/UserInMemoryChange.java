@@ -3,11 +3,13 @@ package javaSpring.waterMeterTelegramBot.service.user;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.store.UsersStore;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperties;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserInMemoryChange implements UserChange {
+//@ConditionalOnProperties(prefix ="userInMemoryChange", value= "enabled", havingValue="true", mathIfMissing = false)
+public final class UserInMemoryChange implements UserChange {
 
     private final UsersStore usersStore;
     private final DrunkWater drunkWater;
