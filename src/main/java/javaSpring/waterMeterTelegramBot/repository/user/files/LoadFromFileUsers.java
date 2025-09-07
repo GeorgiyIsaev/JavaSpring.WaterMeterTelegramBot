@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Repository
 public class LoadFromFileUsers implements LoaderUsers {
-    private Path pathCatalog;
+    private final Path pathCatalog;
 
     public LoadFromFileUsers(PathConfiguration pathInit) {
         this.pathCatalog = pathInit.getPathUsers();

@@ -70,7 +70,7 @@ public class UserFileChange implements UserChange {
 
     @Override
     public User drunkWater(String nameUser, int countWaterMl) {
-        User user = this.getUser(nameUser);
+        User user = this.getUserOrCreateIfNot(nameUser);
         if (user == null) {
             return null;
         }

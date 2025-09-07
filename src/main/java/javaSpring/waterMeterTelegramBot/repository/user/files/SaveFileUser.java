@@ -16,7 +16,7 @@ import java.nio.file.Path;
 
 @Repository
 public class SaveFileUser implements SaverUser {
-    Path pathCatalog;
+    private final Path pathCatalog;
 
     public SaveFileUser(PathConfiguration pathInit) {
         this.pathCatalog = pathInit.getPathUsers();

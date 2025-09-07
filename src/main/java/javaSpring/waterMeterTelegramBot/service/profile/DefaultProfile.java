@@ -2,9 +2,9 @@ package javaSpring.waterMeterTelegramBot.service.profile;
 
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class DefaultProfile implements ProfileSelect{
 
     private final Profile profile;

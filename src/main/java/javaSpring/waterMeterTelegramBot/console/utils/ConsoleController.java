@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 @Component
 public class ConsoleController {
-    Scanner scanner;
+    private final Scanner scanner;
     public ConsoleController(){
         this.scanner = new Scanner(System.in);
     }

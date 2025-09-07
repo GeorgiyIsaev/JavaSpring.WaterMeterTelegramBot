@@ -6,7 +6,7 @@ import javaSpring.waterMeterTelegramBot.service.user.UserChange;
 
 public class SetUserWeight implements Command {
     private final String name;
-    UserChange userChange;
+    private final UserChange userChange;
 
     public SetUserWeight(String name, UserChange userChange) {
         this.name = name;
@@ -21,7 +21,7 @@ public class SetUserWeight implements Command {
 
     @Override
     public String description() {
-        return "\"" + getName() + " 'новое значение веса'\" – Изменит вес пользователя";
+        return "\"" + getName() + "'имя пользовтеля' 'новое значение веса'\" – Изменит вес пользователя";
     }
 
     @Override

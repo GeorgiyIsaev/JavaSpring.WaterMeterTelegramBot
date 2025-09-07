@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public final class UserInMemoryChange implements UserChange {
-
     private final UsersStore usersStore;
     private final DrunkWater drunkWater;
 //
@@ -56,7 +55,7 @@ public final class UserInMemoryChange implements UserChange {
 
     @Override
     public User drunkWater(String nameUser, int countWaterMl) {
-        User user = this.getUser(nameUser);
+        User user = this.getUserOrCreateIfNot(nameUser);
         if (user == null) {
             return null;
         }

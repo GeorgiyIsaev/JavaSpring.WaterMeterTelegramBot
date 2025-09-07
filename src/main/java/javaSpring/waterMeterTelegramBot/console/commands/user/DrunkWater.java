@@ -8,7 +8,7 @@ import javaSpring.waterMeterTelegramBot.service.user.UserChange;
 public class DrunkWater implements Command {
 
     private final String name;
-    UserChange userChange;
+    private final UserChange userChange;
 
     public DrunkWater(String name, UserChange userChange) {
         this.name = name;
@@ -22,7 +22,7 @@ public class DrunkWater implements Command {
 
     @Override
     public String description(){
-        return  "\"" + getName() + " 'количество воды' 'имя пользовтеля'\" – запись о выпитой воде в данный момент";
+        return  "\"" + getName() + "'имя пользовтеля' 'количество воды'\" – запись о выпитой воде в данный момент";
     }
 
     @Override

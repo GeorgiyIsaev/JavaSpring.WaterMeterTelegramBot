@@ -8,7 +8,7 @@ import javaSpring.waterMeterTelegramBot.service.user.UserChange;
 public class ShowCountWaterPresentDay implements Command {
 
     private final String name;
-    UserChange userChange;
+    private final UserChange userChange;
 
     public ShowCountWaterPresentDay(String name, UserChange userChange) {
         this.name = name;
