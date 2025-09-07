@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
-import javaSpring.waterMeterTelegramBot.repository.utils.PathInit;
+import javaSpring.waterMeterTelegramBot.repository.utils.PathConfiguration;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -18,7 +18,7 @@ import java.nio.file.Path;
 public class SaveFileUser implements SaverUser {
     Path pathCatalog;
 
-    public SaveFileUser(PathInit pathInit) {
+    public SaveFileUser(PathConfiguration pathInit) {
         this.pathCatalog = pathInit.getPathUsers();
     }
 

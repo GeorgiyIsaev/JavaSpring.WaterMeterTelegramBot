@@ -5,9 +5,17 @@ import javaSpring.waterMeterTelegramBot.repository.store.UsersStore;
 import javaSpring.waterMeterTelegramBot.repository.user.LoaderUsers;
 import javaSpring.waterMeterTelegramBot.repository.user.SaverUser;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 
+
+//@ConditionalOnProperty(
+//        //  prefix ="userInMemoryChange",
+//        value="save.userFile"//,
+//      //  havingValue="true",
+//       // matchIfMissing = false
+//)
 @Service
 public class UserFileChange implements UserChange {
 

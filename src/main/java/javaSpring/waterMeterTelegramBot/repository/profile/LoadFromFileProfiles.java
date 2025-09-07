@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
-import javaSpring.waterMeterTelegramBot.repository.utils.PathInit;
+import javaSpring.waterMeterTelegramBot.repository.utils.PathConfiguration;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class LoadFromFileProfiles implements LoaderProfiles {
     private final Path pathCatalog;
 
-    public LoadFromFileProfiles(PathInit pathInit) {
+    public LoadFromFileProfiles(PathConfiguration pathInit) {
         this.pathCatalog = pathInit.getPathProfiles();
     }
 

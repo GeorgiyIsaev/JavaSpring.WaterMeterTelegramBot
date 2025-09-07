@@ -26,8 +26,10 @@ public class ConsoleManager {
     private final Map<String, Command> commands;
     ApplicationShutdownManager applicationShutdownManager;
 
-    public ConsoleManager(@Qualifier("userFileChange") UserChange userChange,
-                          @Qualifier("profileSelectFromConsole") ProfilesStore profilesStore,
+    public ConsoleManager(@Qualifier("userFileChange")
+                          UserChange userChange,
+                          @Qualifier("profileSelectFromConsole")
+                          ProfilesStore profilesStore,
                           ConsoleController consoleController,
                           ApplicationShutdownManager applicationShutdownManager){
         this.profilesStore = profilesStore;
