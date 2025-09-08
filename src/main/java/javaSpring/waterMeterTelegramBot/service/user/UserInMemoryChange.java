@@ -6,27 +6,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
-
-//@Service
-//@ConditionalOnProperty(
-//      //  prefix ="userInMemoryChange",
-//        value="memoryOnly")
-////        ,havingValue="true",
-////        matchIfMissing = false)
-//@ConditionalOnProperties(prefix ="userInMemoryChange", value= "enabled", havingValue="true", mathIfMissing = false)
-
-
 @Service
 @ConditionalOnProperty(value="user.memoryOnly.enable" ,havingValue="true",matchIfMissing = false)
 public final class UserInMemoryChange implements UserChange {
     private final UsersStore usersStore;
     private final DrunkWater drunkWater;
-//
-//    public UserInMemoryChange(UsersStore usersStore,
-//                              DrunkWater drunkWater) {
-//        this.usersStore = usersStore;
-//        this.drunkWater = drunkWater;
-//    }
 
 
     public UserInMemoryChange(

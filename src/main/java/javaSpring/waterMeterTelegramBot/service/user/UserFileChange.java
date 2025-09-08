@@ -8,14 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
-
-
-//@ConditionalOnProperty(
-//        //  prefix ="userInMemoryChange",
-//        value="save.userFile"//,
-//      //  havingValue="true",
-//       // matchIfMissing = false
-//)
 @Service
 @ConditionalOnProperty(value="user.inFile.enable" ,havingValue="true",matchIfMissing = false)
 public class UserFileChange implements UserChange {
