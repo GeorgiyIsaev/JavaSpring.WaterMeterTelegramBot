@@ -6,12 +6,14 @@ import javaSpring.waterMeterTelegramBot.repository.profile.files.SaverProfile;
 import javaSpring.waterMeterTelegramBot.console.utils.ConsoleController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.TreeMap;
 
 @Service
+@ConditionalOnProperty(value="profile.file.select.enable" ,havingValue="true",matchIfMissing = false)
 public class ProfileSelectFromConsole implements ProfileSelect {
     private final Map<String, Profile> profiles;
     private final ConsoleController console;
@@ -21,8 +23,10 @@ public class ProfileSelectFromConsole implements ProfileSelect {
 
     @Autowired
     public ProfileSelectFromConsole(
-            @Qualifier("loadFromFileProfiles") LoaderProfiles loaderProfiles,
-            @Qualifier("saveInFileProfile") SaverProfile saverProfiles,
+          //  @Qualifier("loadFromFileProfiles")
+            LoaderProfiles loaderProfiles,
+            //@Qualifier("saveInFileProfile")
+            SaverProfile saverProfiles,
             ConsoleController console) {
         this.console = console;
         this.saverProfiles = saverProfiles;

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 import javaSpring.waterMeterTelegramBot.repository.utils.PathConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -14,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Repository
+@ConditionalOnProperty(value="profile.file.select.enable" ,havingValue="true",matchIfMissing = false)
 public class SaveInFileProfile implements SaverProfile {
 
     private final Path pathCatalog;

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javaSpring.waterMeterTelegramBot.data.profile.Profile;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 import javaSpring.waterMeterTelegramBot.repository.utils.PathConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.nio.file.Path;
 import java.util.Map;
 
 @Repository
+@ConditionalOnProperty(value="profile.file.select.enable" ,havingValue="true",matchIfMissing = false)
 public class LoadFromFileProfiles implements LoaderProfiles {
     private final Path pathCatalog;
 

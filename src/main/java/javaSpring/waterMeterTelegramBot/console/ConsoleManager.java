@@ -17,8 +17,9 @@ public class ConsoleManager {
     private final ApplicationShutdownManager applicationShutdownManager;
 
     public ConsoleManager(
-            //@Qualifier("profileSelectFromConsole") ProfileSelect profileSelect,
-            @Qualifier("defaultProfile") ProfileSelect profileSelect,
+            //@Qualifier("profileSelectFromConsole")
+           // @Qualifier("defaultProfile")
+            ProfileSelect profileSelect,
             ConsoleController consoleController,
             Commands commands,
             ApplicationShutdownManager applicationShutdownManager) {

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 import javaSpring.waterMeterTelegramBot.repository.utils.PathConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -15,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Repository
+@ConditionalOnProperty(value="user.inFile.enable" ,havingValue="true",matchIfMissing = false)
 public class SaveFileUser implements SaverUser {
     private final Path pathCatalog;
 

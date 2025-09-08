@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.repository.exeption.FileException;
 import javaSpring.waterMeterTelegramBot.repository.utils.PathConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -16,6 +17,7 @@ import java.nio.file.Path;
 import java.util.Map;
 
 @Repository
+@ConditionalOnProperty(value="user.inFile.enable" ,havingValue="true",matchIfMissing = false)
 public class LoadFromFileUsers implements LoaderUsers {
     private final Path pathCatalog;
 

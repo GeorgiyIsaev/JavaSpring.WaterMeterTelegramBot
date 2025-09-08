@@ -5,6 +5,7 @@ import javaSpring.waterMeterTelegramBot.repository.user.memory.UsersStore;
 import javaSpring.waterMeterTelegramBot.repository.user.files.LoaderUsers;
 import javaSpring.waterMeterTelegramBot.repository.user.files.SaverUser;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 
@@ -16,15 +17,20 @@ import org.springframework.stereotype.Service;
 //       // matchIfMissing = false
 //)
 @Service
+@ConditionalOnProperty(value="user.inFile.enable" ,havingValue="true",matchIfMissing = false)
 public class UserFileChange implements UserChange {
 
     private final UsersStore usersStore;
     private final SaverUser saverUser;
     private final DrunkWater drunkWater;
 
-    public UserFileChange(@Qualifier("usersInMemoryStore") UsersStore usersStore,
-                          @Qualifier("loadFromFileUsers") LoaderUsers loaderUser,
-                          @Qualifier("saveFileUser") SaverUser saverUser,
+    public UserFileChange(
+           // @Qualifier("usersInMemoryStore")
+            UsersStore usersStore,
+                        //  @Qualifier("loadFromFileUsers")
+                          LoaderUsers loaderUser,
+                      //    @Qualifier("saveFileUser")
+            SaverUser saverUser,
                           DrunkWater drunkWater) {
         this.usersStore = usersStore;
         this.saverUser = saverUser;

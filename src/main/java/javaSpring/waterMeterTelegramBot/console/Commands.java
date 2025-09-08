@@ -17,7 +17,9 @@ import java.util.Map;
 public class Commands {
     private final Map<String, Command> commands;
 
-    public Commands(@Qualifier("userFileChange")UserChange userChange) {
+    public Commands(
+            //@Qualifier("userFileChange")
+                    UserChange userChange) {
         this.commands = new LinkedHashMap<>();
         generateCommand(userChange);
     }

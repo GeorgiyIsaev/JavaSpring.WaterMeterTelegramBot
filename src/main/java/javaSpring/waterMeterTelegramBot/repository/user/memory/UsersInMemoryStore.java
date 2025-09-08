@@ -2,6 +2,7 @@ package javaSpring.waterMeterTelegramBot.repository.user.memory;
 
 import javaSpring.waterMeterTelegramBot.data.user.User;
 import javaSpring.waterMeterTelegramBot.data.user.WaterDrunksForDay;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @Repository
+@ConditionalOnProperty(prefix ="usersInMemoryStore", value="enable" ,havingValue="true",matchIfMissing = false)
 public class UsersInMemoryStore implements UsersStore{
 
     private final Map<String, User> users;
